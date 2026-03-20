@@ -1,0 +1,52 @@
+---
+description: "60 — Pre-completion validation, cross-artifact checks, contradiction handling"
+alwaysApply: true
+---
+
+# Review and validation governance
+
+## Purpose
+
+Prevent “looks complete” documentation that is **internally inconsistent**, **non-compliant with paths**, or **contradictory across PRD, plans, tasks, and architecture**.
+
+## Scope
+
+- **Global:** any milestone where assistants declare design/docs **complete**, **ready for PR**, or **ready to submit**.
+- **Artifacts in scope:** `ai-specs/prd/<NNN>-prd.md`, `ai-specs/plan/<NNN>-plan.md`, `ai-specs/tasks/<NNN>-task.md`, **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**, **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`**, optional **`ai-specs/review/<NNN>-review.md`**.
+
+## Requirements — when validation MUST run
+
+1. Before the assistant states that a **course deliverable** is **complete** or **submission-ready**, the assistant MUST perform a **validation pass** (manually or by applying **`.cursor/skills/validate-artifacts/SKILL.md`** if the user has not forbidden skill use).
+2. After **large merges** (e.g. PRD content lifted into **`LTI-*`** main doc) or **multi-agent** edits in one session, the assistant MUST run validation **or** explicitly list **deferred** checks with **Open questions**—MUST NOT defer silently.
+
+## Requirements — what validation MUST check
+
+1. **Mandatory sections:** Deliverable MUST satisfy **`20-deliverable-markdown.mdc`**; PRD/plan/task files MUST satisfy their templates in **`.cursor/skills/`** when those artifacts exist.
+2. **Internal consistency:** No conflicting MVP scope, duplicate **H1**, broken **FR-** / **ADR-** numbering without explanation.
+3. **Cross-artifact alignment:** Goals ↔ FRs ↔ metrics (PRD); FRs ↔ diagram entity names ↔ tasks; NFRs ↔ architecture and ADRs.
+4. **Path compliance:** All new artifacts MUST comply with **`40-naming-and-paths.mdc`**.
+5. **Duplication:** MUST flag copy-pasted blocks that contradict each other; MUST NOT “resolve” contradictions by silent deletion without user direction.
+6. **Assumptions and evidence:** Product or compliance claims MUST be labeled **assumption**, **Open question**, or backed by cited context; MUST NOT read as verified facts when they are not.
+7. **Architecture vs requirements:** ADRs and containers MUST NOT introduce **new product requirements** without traceability to PRD, README, or explicit user instruction.
+
+## Output of validation
+
+1. Validation results MUST be structured (PASS / FAIL / N/A per major check or equivalent bullet findings).
+2. Every **FAIL** MUST cite **file path** and **section heading** where possible.
+3. **Blockers** (broken fences, missing required sections, contradictory sources of truth) MUST be reported before claiming completion.
+
+## Prohibited behavior
+
+- MUST NOT claim “validated” or “complete” without having **read** the artifacts in scope.
+- MUST NOT rewrite product intent to fix a contradiction unless the user explicitly authorizes the change.
+- MUST NOT skip validation because “the document is long.”
+
+## Verification
+
+- [ ] Checklist in this rule addressed or explicitly marked out-of-scope with reason.
+- [ ] Contradictions listed, not hidden.
+- [ ] Path and diagram rules (`40-`, `50-`) cited when violations are found.
+
+## Reference
+
+Operational steps and optional persisted report path **`ai-specs/review/<NNN>-review.md`** are defined in **`.cursor/skills/validate-artifacts/SKILL.md`**. This rule sets **governance**; that skill sets **procedure**.

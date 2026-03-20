@@ -1,37 +1,58 @@
 ---
 name: generate-prd
 description: >-
-  Produces a Product Requirements Document (PRD) for an Applicant Tracking
-  System from a short general description. Use when the user asks for a PRD,
-  product spec, requirements doc, roadmap inputs, or LTI/ATS scope from a brief.
+  Produces a structured PRD for an ATS from a short brief, default path
+  ai-specs/prd/<NNN>-prd.md. Use for product specs and LTI/ATS scope—not for
+  typed ERDs or deep C4 (develop-architect). Pair with validate-artifacts
+  before handoff when multiple docs must align.
 ---
 
 # Generate PRD (ATS)
 
-## Trigger
+## Purpose
 
-The user supplies a **general description** of an **Applicant Tracking System** (vision, problem, audience, or bullet notes). Expand it into a structured **PRD** in Markdown. Do not invent compliance claims or integrations; capture unknowns under **Open questions**.
+Expand a **short ATS-oriented description** into a **structured PRD** (Markdown) with **testable FRs**, **NFRs**, explicit **Open questions**, and optional **Mermaid** for course-aligned sections.
 
-## Output path (default)
+## When to Use
 
-```
+- The user asks for a **PRD**, **product spec**, **requirements doc**, **roadmap inputs**, or **LTI/ATS scope** from a brief.
+
+## When Not to Use
+
+- **Final typed ERD** (attributes + engineering types) or **deep C4** as the authoritative design → **develop-architect** (and architect agent).
+- **Execution plan** only → **plan-story**.
+- **Single story** refinement → **improve-story**.
+- **Cross-document audit** → **validate-artifacts**.
+
+## Inputs
+
+- **General description**: vision, problem, audience, bullets.
+- Optional: **existing PRD path** to update (see **Create vs Update**).
+- Optional: **alternate output path** if user names one explicitly (then **skip** default `NNN` sequencing for that run).
+
+## Outputs
+
+- Default file path:
+
+```text
 ai-specs/prd/<NNN>-prd.md
 ```
 
-- **`NNN`**: three-digit zero-padded sequence (`001`, `002`, …). Scan `ai-specs/prd/` for `^\d{3}-prd\.md$`, use **max + 1**, or **`001`** if missing/empty. Create directories if needed.  
-- If the user names a different path, use that instead and skip sequencing.
+- **`<NNN>`** — three-digit zero-padded (`001`, `002`, …). Scan **`ai-specs/prd/`** for **`^\d{3}-prd\.md$`**, use **max + 1**, or **`001`** if missing/empty. Create directories if needed.
+- If the user **names a different path**, write there and **document** that choice in the reply (no automatic `NNN`).
 
-## ATS domain lenses (use where relevant)
+**Forbidden ambiguous form:** path ending in only `-prd.md` without a numeric prefix.
 
-- **Entities:** requisitions/jobs, candidates/applications, pipeline stages, offers, users/roles (recruiter, hiring manager, admin).  
-- **Flows:** sourcing, apply, screen, interview schedule, feedback, decision, hire/reject, compliance/consent.  
-- **Collaboration:** real-time or shared visibility between recruiters and hiring managers.  
-- **Automations & AI:** scoring, scheduling assistance, drafting, **human-in-the-loop** where decisions affect candidates.  
-- **Non-functional:** privacy, retention, audit trails, accessibility, performance, integrations (HRIS, calendar, email).
+## Process
+
+1. Parse the description; **one** clarifying question only if **blocking**; otherwise use **Open questions** in the PRD.
+2. Resolve **create vs update** target path (below).
+3. Fill **PRD template**; add **Lean Canvas**, **Use cases** (three), and course-oriented sections when supporting **`ReadMe.md`** / `LTI-*` work.
+4. Reply with **exact path** and a **one-paragraph** scope summary.
 
 ## PRD template (required sections)
 
-Use this outline; adapt depth to the input size.
+Use this outline; adapt depth to input size.
 
 ```markdown
 # <Product name> — Product Requirements Document
@@ -79,31 +100,58 @@ Use this outline; adapt depth to the input size.
 ### References
 ```
 
-## Quality bar
+## ATS domain lenses (use where relevant)
 
-- **Testable FRs** — “The system shall …” / clear acceptance per item.  
-- **Traceability** — goals → FRs → metrics where obvious.  
-- **Tone** — product-level; defer **component-level C4** and **typed ERD** depth to **develop-architect** / architect agent (see below).  
-- **Secrets** — redact if the paste contains tokens, salaries, or PII.
+- **Entities:** requisitions/jobs, candidates/applications, pipeline stages, offers, users/roles (recruiter, hiring manager, admin).  
+- **Flows:** sourcing, apply, screen, interview schedule, feedback, decision, hire/reject, compliance/consent.  
+- **Collaboration:** real-time or shared visibility between recruiters and hiring managers.  
+- **Automations & AI:** scoring, scheduling assistance, drafting, **human-in-the-loop** where decisions affect candidates.  
+- **Non-functional:** privacy, retention, audit trails, accessibility, performance, integrations (HRIS, calendar, email).
 
 ## Alignment with `ReadMe.md` (LTI / AI4Devs deliverable)
 
-When the PRD supports the **course bundle** (single `LTI-<INITIALS>/LTI-<INITIALS>.md`), ensure the PRD (or a summarized export into that file) can supply:
+When the PRD supports the **course bundle** (single **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`** — basename matches folder, e.g. **`LTI-ICS/LTI-ICS.md`**), ensure the PRD (or export into that file) can supply:
 
 | Course checklist item | In PRD (this skill) |
 |----------------------|---------------------|
 | Brief description, value, competitive advantages | **Executive summary**, **Goals**, **Proposed solution** |
 | Main functions | **Functional requirements**, **User journeys** |
-| Lean Canvas | Add section **## Lean Canvas** with a **Mermaid** diagram or equivalent structure (problem, solution, metrics, unfair advantage, channels, segments, cost, revenue) |
-| 3 main use cases + diagram each | Add **## Use cases** with exactly **three** `###` subsections; each: short narrative + fenced **`mermaid`** (`sequenceDiagram` or `flowchart`) |
-| Data model (entities, attributes+types, relationships) | Add **## Data model (conceptual)** listing entities and relationships; **types** may be preliminary—flag “finalize with architect” if full precision is required |
-| High-level system design + diagram | Add **## High-level system design** with prose + one **Mermaid** context/container-style diagram at product-appropriate depth |
-| C4 depth on one component | Add **## C4 component focus (draft)** with Mermaid if possible, or a bullet handoff: “Detailed C4: use **develop-architect** / `/architect`” |
+| Lean Canvas | Section **## Lean Canvas** with **Mermaid** or structured canvas |
+| 3 main use cases + diagram each | **## Use cases** — exactly **three** `###` subsections; each: narrative + fenced **`mermaid`** |
+| Data model (conceptual) | **## Data model (conceptual)** — entities/relationships; flag **finalize with architect** for typed ERD |
+| High-level system design + diagram | **## High-level system design** — prose + Mermaid at product depth |
+| C4 depth on one component | **## C4 component focus (draft)** or explicit handoff to **develop-architect** |
 
-The **product-manager** agent is the intended **primary consumer** of this skill; PRD output can live in `ai-specs/prd/<NNN>-prd.md` **and** be **merged** into the student’s `LTI-*` main doc for accuracy against `ReadMe.md`.
+**Primary consumer:** **product-manager** agent. PRD may live in **`ai-specs/prd/<NNN>-prd.md`** **and** be **merged** into the student’s **`LTI-*`** doc per course rules.
 
-## Workflow
+## Quality Checks
 
-1. Parse the user’s ATS description; one clarifying question only if blocking.  
-2. Write the PRD using the template; default save to `ai-specs/prd/<NNN>-prd.md`.  
-3. Reply with the **exact path** and a one-paragraph summary of scope.
+| Check | Pass |
+|-------|------|
+| FRs | Each **FR-NNN** is **testable** (“system shall…” or equivalent clarity) |
+| Traceability | Goals → FRs → metrics where obvious; glossary for overloaded terms |
+| Honesty | No fabricated compliance/vendor claims; gaps in **Open questions** |
+| Tone | Product-level; defer **component-level C4** and **typed ERD** depth to **develop-architect** |
+| Secrets | Redact tokens, salaries, PII from input |
+
+**Bad output:** Buzzword summary, non-testable FRs, missing **Non-goals** / **Open questions** when scope was underspecified.
+
+**Good output:** Numbered FRs/NFRs, explicit MVP phasing, Mermaid fences valid, path **`ai-specs/prd/<NNN>-prd.md`** confirmed.
+
+## Create vs Update Guidance
+
+| Situation | Action |
+|-----------|--------|
+| **New** PRD (default) | Next free `<NNN>` → create **`ai-specs/prd/<NNN>-prd.md`**. |
+| **Update** existing `ai-specs/prd/<NNN>-prd.md` | **Read** file first; **merge** new content into correct sections; bump **Document control / Version**; **preserve FR-NNN** sequence—append new FRs with **next** free numbers, do not renumber existing FRs without user approval. |
+| **Merge PRD sections into** `LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md` | **Do not** duplicate **H1**; integrate under existing headings or add clearly labeled sections; note **source PRD path** in a HTML comment or **Document control** if user wants traceability. |
+| User gave alternate path | Write there; **do not** auto-assign `NNN` unless user also wants a mirrored copy under `ai-specs/prd/`. |
+
+**Overwrite rule:** Never replace an entire existing PRD with a fresh template **without** reading and merging unless the user explicitly asks to **replace** the document.
+
+## Common Mistakes to Avoid
+
+- Inventing **legal/regulatory** certainty—in flag as **assumption** or **Open question**.
+- Putting **deep C4** or **typed ER** in the PRD as final truth—keep **conceptual** or label **draft pending architect**.
+- Leaving **three use cases** at narrative-only when course requires **diagram each**.
+- Using ambiguous paths like **`-prd.md`** without **`NNN`**.

@@ -1,54 +1,88 @@
 ---
 name: develop-architect
 description: >-
-  Acts as a software architect: frames problems, defines quality attributes and
-  boundaries, applies clean-architecture ideas (domain clarity, DIP, ports and
-  adapters), produces C4-aligned structural views, and records decisions with
-  trade-offs. Persists Architecture Decision Records to LTI-ICS/ARD.md whenever
-  this skill informs the response. Primary skill for LTI course data model,
-  high-level design, and deep C4 per ReadMe.md. Use when designing or
-  documenting systems, high-level solutions, integrations, data architecture,
-  or reviewing design coherence for a greenfield or evolving product.
+  Software architecture skill: quality attributes, C4-aligned Mermaid, clean
+  architecture framing, ADRs in the active contributor ARD.md (LTI-* folder).
+  Use for system design and data modeling—not for replacing PRD intent
+  (generate-prd) or execution tasks (improve-story). Pair with validate-artifacts
+  for coherence.
 ---
 
-# Software architect agent
+# Software architect skill (develop-architect)
 
-## Mindset
+## Purpose
+
+Turn **stated requirements and constraints** into **coherent technical structure**: prioritized NFRs, **C4-aligned** diagrams (Mermaid), **typed** data models where required, explicit **trade-offs**, and **append-only ADRs** tied to the active contributor folder.
+
+## When to Use
+
+- Designing or documenting **systems**, **integrations**, **data architecture**, or **high-level solutions** for the LTI/ATS design exercise.
+- Producing **`erDiagram`**, **context/container/component** views, or **sequence** diagrams that must reflect **trust boundaries** and **PII**.
+- Recording **committed**, **rejected**, or **superseded** technical decisions in the **ADR log**.
+
+## When Not to Use
+
+- **Replacing** product strategy, MVP prioritization, or **problem framing** without PRD/README/user alignment → product owner / **generate-prd**.
+- **Phased delivery planning** as the only artifact → **plan-story**.
+- **Single story** acceptance specs → **improve-story**.
+- **Git commits** only → **commit**.
+- **Read-only audit** of multiple docs → **validate-artifacts** (may consume outputs of this skill).
+
+## Inputs
+
+- **Requirements source:** `README.md`, **`ai-specs/prd/<NNN>-prd.md`**, **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**, or user-provided constraints.
+- **Contributor slug** for ADR + deliverable paths: e.g. **`LTI-ICS`** (folder name = basename of main `.md`).
+- Optional: existing **ADR** file **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`**.
+
+## Outputs
+
+- **Architecture prose + Mermaid** in user-targeted files (often embedded in **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**).
+- **ADR log** at:
+
+```text
+LTI-<CONTRIBUTOR-SLUG>/ARD.md
+```
+
+Example: slug **`LTI-ICS`** → **`LTI-ICS/ARD.md`** (repository root–relative).
+
+- **Diagram types:** `flowchart` / `sequenceDiagram` / `erDiagram` per rules below.
+
+## Process
+
+### Mindset
 
 - **Requirements first**: business outcomes, actors, constraints (regulatory, cost, latency, team, legacy).  
 - **Explicit trade-offs**: every important choice costs something—state what was deprioritized.  
 - **Diagrams + prose**: boxes without rationale are insufficient; walls of text without structure are hard to validate.
 
-## Architectural drivers
+### Architectural drivers
 
-1. Elicit and **prioritize quality attributes** (e.g. availability, consistency, scalability, security, operability, time-to-market).  
+1. Elicit and **prioritize quality attributes** (availability, consistency, scalability, security, operability, time-to-market).  
 2. Map the **top two or three** to structural decisions (sync vs async, split vs monolith, where data lives, trust boundaries).  
 3. List **assumptions** and **risks** (what would invalidate the design).
 
-## Solution shaping
+### Solution shaping
 
 - **Decompose** by capability or bounded context; avoid naming components only after technologies.  
-- **Integration**: choose sync API, async events, batch, or files intentionally—note latency, ordering, idempotency, and failure behavior.  
+- **Integration**: choose sync API, async events, batch, or files intentionally—note latency, ordering, idempotency, failure behavior.  
 - **Trust boundaries**: authN/authZ, sensitive data, external systems, admin vs tenant-facing paths.  
 - **Operations**: deployability, observability (logs/metrics/traces), backups, rollbacks, secrets—at least at a high level.
 
-## Clean architecture considerations
+### Clean architecture considerations
 
-Apply these when proposing **structure** (especially inside an application container), not as ceremony: adapt to monolith vs services, but keep **dependencies and responsibilities** honest.
+Apply when proposing **structure** inside an application boundary; adapt to monolith vs services.
 
 | Principle | Practice |
 |-----------|----------|
-| **Understand the problem domain** | Name **bounded contexts**, align box names with **ubiquitous language**; separate hiring rules from integrations and UI concerns. |
-| **Clear division of responsibilities** | Split **domain** (rules, entities), **application** (use cases, orchestration), **infrastructure** (DB, queues, HTTP clients), **presentation** (API/UI). Each layer has one reason to change. |
-| **Inversión de dependencias (DIP)** | **Inner** layers define **ports** (interfaces); **outer** layers implement **adapters**. Dependencies point **inward**; the core never imports framework or DB SDK types as part of domain rules. |
-| **Focus on the core** | The **domain + use cases** stay technology-agnostic in documentation and boundaries; frameworks sit at the edge. |
-| **Unit testing and integration** | **Fast unit tests** target domain and use-case logic **without** real I/O; **integration tests** prove adapters (DB, brokers, external APIs). Call out seams where tests replace fakes with real doubles. |
-| **Technological flexibility** | Prefer **swappable** implementations behind ports (e.g. replace email provider, search backend) without rewriting the core. |
-| **Scalability and maintainability** | **Modular boundaries** and stable interfaces enable **team parallel work**, selective **scale-out** of bottlenecks, and safer evolution—document where scaling assumptions live (state, coupling). |
+| **Understand the problem domain** | Name **bounded contexts**; align box names with **ubiquitous language**. |
+| **Clear division of responsibilities** | **Domain** (rules, entities), **application** (use cases), **infrastructure** (DB, queues, HTTP clients), **presentation** (API/UI). |
+| **DIP** | Inner layers define **ports**; outer layers **adapters**; dependencies point **inward**. |
+| **Focus on the core** | Domain + use cases stay technology-agnostic in documentation. |
+| **Unit vs integration testing** | Fast unit tests without real I/O; integration tests for adapters. |
+| **Technological flexibility** | Swappable implementations behind ports. |
+| **Scalability and maintainability** | Modular boundaries; document scaling assumptions. |
 
-When diagramming, you may label **flowchart** subgraphs or notes as *Domain / Application / Infrastructure* to make dependency direction obvious.
-
-## Modeling (C4-aligned)
+### Modeling (C4-aligned)
 
 | Level | Answers | Typical audience |
 |-------|---------|------------------|
@@ -56,13 +90,11 @@ When diagramming, you may label **flowchart** subgraphs or notes as *Domain / Ap
 | Containers | Deployable units, major tech | Devs, ops |
 | Components | Major parts inside one container | Devs |
 
-**Hygiene:** one main idea per diagram; **consistent names** across levels; label **protocols** and **sync vs async**; add a short **legend** when needed. For Markdown, use **Mermaid** blocks by default and split oversized graphs.
+**Hygiene:** one main idea per diagram; **consistent names** across levels; label **protocols** and **sync vs async**; short **legend** when needed. Prefer **Mermaid**; split oversized graphs.
 
-## Mermaid-first implementation rule
+### Mermaid-first rule
 
-When implementing design tasks, produce architecture artifacts with fenced Mermaid blocks in Markdown.
-
-Required pattern:
+Produce architecture artifacts with fenced Mermaid blocks.
 
 ```markdown
 ```mermaid
@@ -71,37 +103,27 @@ flowchart LR
 ```
 ```
 
-- Prefer `flowchart` for structure/topology, `sequenceDiagram` for request/event flow, and `erDiagram` for data models.
-- Keep IDs short, labels readable, and direction explicit (`LR`/`TD`).
-- If a single diagram gets dense, split into context/container/component diagrams instead of one large graph.
-- Pair each Mermaid block with 2-5 lines of explanation covering purpose, key flows, and trade-offs.
+- Prefer `flowchart`, `sequenceDiagram`, `erDiagram` as appropriate.  
+- Pair each block with **2–5 lines** explaining purpose, flows, and trade-offs.
 
-## Decisions (ADR-style)
+### Decisions (ADR-style)
 
-For reversible choices, a short paragraph may suffice. For **costly or contested** choices, capture:
+For costly or contested choices: **Context**, **Decision**, **Options** (with pros/cons), **Consequences**. Mark superseded decisions instead of silent deletes.
 
-- **Context** — forces and constraints.  
-- **Decision** — one clear statement.  
-- **Options** — at least one credible alternative with pros/cons.  
-- **Consequences** — trade-offs, follow-up work, when to revisit.
+### ADR log — `LTI-<CONTRIBUTOR-SLUG>/ARD.md` (required when decisions are recorded)
 
-Mark superseded decisions instead of silent edits.
+When this skill shapes the reply, **update** **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`** in the **same turn** if the reply records **any** of:
 
-## ADR log — `LTI-ICS/ARD.md` (required)
+- A **committed** architectural decision.  
+- A **rejected** option worth preserving.  
+- A **meaningful change** that **supersedes** a prior decision.
 
-When **this skill** is used to shape the assistant’s reply, **update** `LTI-ICS/ARD.md` in the **same turn** if the reply records **any** of the following:
+If the turn is **purely exploratory** (no decision, rejection, or supersession), **do not** append placeholders.
 
-- A **committed** architectural decision (what we will do).  
-- A **rejected** option worth preserving (what we will not do, with why).  
-- A **meaningful change** to a prior decision (supersedes an earlier ADR).
+**File setup**
 
-If the turn is purely exploratory (no decision, rejection, or supersession), **do not** append a placeholder; only update the file when there is something to log.
-
-### File setup
-
-- Path: **`LTI-ICS/ARD.md`** (repository root–relative).  
-- Create **`LTI-ICS/`** and the file if missing.  
-- If the file is new, start with:
+- Path: **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`** (example: **`LTI-ICS/ARD.md`**).  
+- Create folder and file if missing. New file starter:
 
 ```markdown
 # Architecture decision records (ADR)
@@ -110,14 +132,14 @@ If the turn is purely exploratory (no decision, rejection, or supersession), **d
 
 ```
 
-### Numbering and append rules
+**Numbering and append rules**
 
-1. Read existing entries; find the highest **`ADR-NNN`** heading (`NNN` = zero-padded three digits). Next entry is **`ADR-<NNN+1>`**. If none exist, start at **`ADR-001`**.  
-2. **Append** new ADRs at the **end** of the file (preserve history).  
-3. Separate entries with a line containing only **`---`** between consecutive ADRs (not before the first).  
-4. To **supersede**: add a new ADR that states what it replaces; edit the older block only to set **Status** to `Superseded by ADR-XXX`—do not delete prior text.
+1. Find highest **`ADR-NNN`** heading (`NNN` zero-padded three digits). Next entry **`ADR-<NNN+1>`**; if none, start **`ADR-001`**.  
+2. **Append** new ADRs at **end** (preserve history).  
+3. Separate consecutive ADRs with a line containing only **`---`** (not before the first).  
+4. **Supersede:** add new ADR stating what it replaces; edit older block **only** to set **Status** to `Superseded by ADR-XXX`—**do not** delete prior text.
 
-### Entry template (append each ADR)
+**Entry template (append each ADR)**
 
 ```markdown
 ## ADR-NNN — <short title>
@@ -138,40 +160,69 @@ If the turn is purely exploratory (no decision, rejection, or supersession), **d
 
 ```
 
-Redact secrets, credentials, and confidential identifiers in the log.
+Redact secrets and confidential identifiers.
 
-## Deliverable checklist
+### Alignment with `ReadMe.md` (LTI / AI4Devs)
+
+When producing **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**, this skill **leads**:
+
+| Course requirement | This skill delivers |
+|--------------------|---------------------|
+| **Data model** — entities, attributes (**name + type**), relationships | **`erDiagram`** (or tables + ER Mermaid) with types and cardinalities |
+| **High-level system design** — prose + diagram | Context/container narrative + **Mermaid** |
+| **C4** — depth on **one** component | Component diagram **inside** chosen container |
+| **3 use cases** — technical diagrams | **Co-own** with PM: refine **sequence**/**flow** for auth, stores, externals |
+
+**Lean Canvas**, **brief / competitive story**, and **first-pass** function list are **product-manager** / **generate-prd** territory—do not replace unless no PM content exists and the user requests a **minimal** placeholder.
+
+## Quality Checks
+
+| Check | Pass |
+|-------|------|
+| NFRs → structure | Top quality attributes reflected in diagrams/decomposition |
+| Diagrams | Mermaid fences valid; names consistent across context/container/component |
+| Trust & PII | Sensitive flows called out; boundaries plausible |
+| ADRs | **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`** updated when decisions/rejections/supersessions occurred this turn |
+| Honesty | Open risks and unknowns visible; no fake precision on compliance |
+
+**Bad output:** Technology laundry list with no requirement mapping; “scalable/secure” without criteria; duplicate C4 levels with no added detail.
+
+**Good output:** Ranked NFRs, diagrams + short rationale, ADRs for contested choices, explicit assumptions.
+
+## Create vs Update Guidance
+
+| Artifact | Create | Update |
+|----------|--------|--------|
+| **ADR log** | Create **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`** with header if missing | **Append** ADRs only; use **supersede** pattern—no silent deletion of history |
+| **Deliverable `.md`** | Add new sections/diagrams where missing | **Read** existing file; **merge** diagrams and prose; avoid duplicate **H1**; align box names with glossary |
+| **Mermaid** | New blocks where needed | **Edit** existing blocks in place when refining; note major semantic change in prose or ADR |
+
+**Overwrite rule:** Do not replace an entire **`LTI-*`** deliverable with a blank template. Do not change **ADR-NNN** numbering of past entries except **Status** line for supersession.
+
+## Common Mistakes to Avoid
+
+- Logging ADRs to a **hard-coded** folder that does not match the student’s **`LTI-*`** slug—always use **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`** for the active contributor.
+- **Technology-first** stacks with no mapped requirements.
+- **Identical** diagram at every C4 level without added detail.
+- **Silent** product scope expansion in architecture not traceable to PRD/README.
+
+## Deliverable checklist (milestone)
 
 Before treating design work as “done” for a milestone:
 
 - [ ] Problem, stakeholders, and success criteria are stated.  
 - [ ] Top NFRs are ranked and reflected in the structure.  
 - [ ] Context + container views exist (or justified absence) as Mermaid blocks.  
-- [ ] Critical flows (e.g. money, PII, hiring pipeline) have narrative and/or sequence.  
+- [ ] Critical flows (e.g. PII, hiring pipeline) have narrative and/or sequence.  
 - [ ] Major decisions or rejections are recorded with alternatives.  
-- [ ] **`LTI-ICS/ARD.md`** is updated when this skill led to new or superseded ADRs.  
-- [ ] **Clean-architecture fit** is visible where applicable: core vs adapters, **DIP** (who depends on whom), and test boundaries—not an empty “onion” claim without boxes or arrows.  
-- [ ] Open risks and unknowns are visible.
+- [ ] **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`** updated when this skill led to new or superseded ADRs.  
+- [ ] Clean-architecture fit visible where applicable: core vs adapters, DIP, test boundaries.  
+- [ ] Open risks and unknowns visible.
 
 ## Anti-patterns to flag
 
-- Technology-first stacks with no mapped requirements.  
 - “Scalable/secure” without measurable criteria.  
-- One undifferentiated system with no seams for future change.  
-- Identical diagram duplicated at every C4 level without added detail.  
-- Domain rules buried in controllers, repositories, or ORM-only “anaemic” models with no use-case layer—**unless** explicitly justified for a throwaway spike.
+- One undifferentiated system with no seams for change.  
+- Domain rules buried only in controllers/ORM—unless justified for a spike.
 
-## Alignment with `ReadMe.md` (LTI / AI4Devs)
-
-When producing the **single** deliverable `LTI-<INITIALS>/LTI-<INITIALS>.md`, the **architect** agent owns application of this skill for:
-
-| Course requirement | This skill delivers |
-|--------------------|---------------------|
-| **Data model** — entities, attributes (**name + type**), relationships | **`erDiagram`** (or tables + ER Mermaid) with explicit types and cardinalities |
-| **High-level system design** — prose + diagram | Context/container narrative + **Mermaid** `flowchart` (or layered diagram) |
-| **C4** — depth on **one** component | Component diagram **inside** the chosen container; interfaces and deps named |
-| **3 use cases** — technical diagrams | **Co-own** with PM: refine **sequence**/**flow** Mermaid for correctness (auth, data stores, external systems) |
-
-**Lean Canvas**, **brief / competitive story**, and **first-pass** function list are **product-manager** territory—do not replace them unless no PM content exists and the user asks for a minimal placeholder.
-
-The **architect** subagent is the intended **primary owner** of this `SKILL.md`.
+The **architect** agent is the intended **primary owner** of this `SKILL.md`.

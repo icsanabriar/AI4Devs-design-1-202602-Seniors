@@ -1,43 +1,67 @@
 ---
 name: plan-story
 description: >-
-  Turns a user-supplied story into an execution plan (phases, work items,
-  risks, dependencies) and saves it under ai-specs/plan as a numbered plan
-  file. Use when the user wants a roadmap, breakdown, or delivery plan from an
-  idea, ticket, or brief without yet refining full acceptance criteria.
+  Turns a user story or brief into a numbered execution plan under
+  ai-specs/plan/<NNN>-plan.md. Use for roadmaps and phased breakdowns without
+  full acceptance criteria. Does not replace improve-story task specs.
 ---
 
 # Plan story → plan spec
 
-## Trigger
+## Purpose
 
-The user provides a **story** (text, draft, ticket paste, or path to a file). **Do not** overwrite their source unless they ask; **always** write the plan to **`ai-specs/plan/`** as below.
+Produce a **delivery-oriented plan** (phases, dependencies, risks) saved as a **new numbered file** under `ai-specs/plan/`, without overwriting the user’s source material.
 
-## Output path (required)
+## When to Use
 
-```
+- The user wants a **roadmap**, **breakdown**, or **delivery plan** from an idea, ticket, or brief.
+- They need **sequencing** and **dependencies** more than **Given/When/Then** acceptance (use **improve-story** for the latter).
+
+## When Not to Use
+
+- The user needs **testable acceptance criteria** as the main output → use **improve-story** (`ai-specs/tasks/<NNN>-task.md`).
+- The user only wants **product goals / FRs** → use **generate-prd**.
+- The user asked for a **validation pass** only → use **validate-artifacts**.
+
+## Inputs
+
+- A **story**: pasted text, ticket body, or path to a file.
+- Optional: **existing plan path** to revise (then follow **Create vs Update**).
+
+## Outputs
+
+- **New or updated** Markdown file at:
+
+```text
 ai-specs/plan/<NNN>-plan.md
 ```
 
-- **`NNN`** is a **three-digit zero-padded** sequence: `001`, `002`, …  
-- **Next number:** list `ai-specs/plan/` for files matching `^\d{3}-plan\.md$`, take the **highest** `NNN`, add **1**. If the directory is missing or empty, use **`001`**.  
-- Create `ai-specs/plan/` (and `ai-specs/`) if they do not exist.
+- **`<NNN>`** — three-digit zero-padded integer: `001`, `002`, …
+- **Next `<NNN>` for a new file:** list `ai-specs/plan/` for files matching **`^\d{3}-plan\.md$`**, take the **highest** `NNN`, add **1**; if directory missing or empty → **`001`**.
+- Create **`ai-specs/plan/`** and **`ai-specs/`** if absent.
+
+**Forbidden ambiguous form:** a path ending in only `-plan.md` without a numeric prefix.
+
+## Process
+
+1. Parse the story; **one** minimal clarification only if **blocking**; otherwise capture unknowns under **Open questions**.
+2. Resolve target path per **Create vs Update Guidance**.
+3. Write the plan using **Output file template** below.
+4. Tell the user the **exact path** written.
 
 ## What “plan” means
 
-Produce a **delivery-oriented plan** the team can follow or slice further:
-
-1. **Goal & outcome** — What “done” means for this story in one short paragraph.  
+1. **Goal & outcome** — What “done” means in one short paragraph.  
 2. **Assumptions** — Only what the plan relies on; separate from **Open questions**.  
-3. **Constraints** — Time, tech, policy, or coupling called out by the user or clearly implied.  
-4. **Work breakdown** — Numbered phases or work packages; each item has a clear deliverable. Prefer dependency order (foundation → integration → polish).  
-5. **Milestones / checkpoints** — Optional but useful for multi-step work (demo points, design freeze, release gate).  
-6. **Dependencies** — People, systems, data, prior tasks, feature flags.  
-7. **Risks & mitigations** — Top 3–5; include **spikes** or proof-of-concept steps if uncertainty is high.  
-8. **Definition of ready (for build)** — Short list of what must be true before heavy implementation (e.g. API contract, UX signoff).  
-9. **Open questions** — Unknowns that affect scope or order; do not invent facts.
+3. **Constraints** — Time, tech, policy, or coupling from user or clear implication.  
+4. **Work breakdown** — Numbered phases or packages; dependency order (foundation → integration → polish).  
+5. **Milestones / checkpoints** — Optional; demos, design freeze, release gate.  
+6. **Dependencies** — People, systems, data, prior tasks, flags.  
+7. **Risks & mitigations** — Top 3–5; include **spikes** if uncertainty is high.  
+8. **Definition of ready (for build)** — What must be true before heavy implementation.  
+9. **Open questions** — Unknowns affecting scope/order; **do not invent facts**.
 
-If the story is tiny, keep the plan short; avoid ceremony for its own sake.
+If the story is tiny, keep the plan short.
 
 ## Output file template
 
@@ -68,14 +92,32 @@ If the story is tiny, keep the plan short; avoid ceremony for its own sake.
 <!-- Brief note: pasted story / file path / chat reference; omit secrets -->
 ```
 
-## Workflow
+## Quality Checks
 
-1. Parse the given story; ask **one** minimal clarification only if blocking (otherwise use **Open questions**).  
-2. Compute **NNN** and write `ai-specs/plan/<NNN>-plan.md` with the plan.  
-3. Tell the user the **exact path** created.
+| Check | Pass |
+|-------|------|
+| File path | Matches `ai-specs/plan/<NNN>-plan.md` with three-digit `NNN` |
+| New file numbering | Uses **next** free `NNN`, not a duplicate number for a **different** plan |
+| Content | All template sections present or explicitly marked N/A (only for Milestones if unused) |
+| Safety | Source story path or paste **not** deleted or overwritten unless user asked |
 
-## Guardrails
+**Bad output:** Vague phases with no deliverables, invented dates/facts, or wrong `NNN` colliding with an existing plan.
 
-- No secrets or confidential data in **Source** or body; redact if the input contained any.  
-- Do not bump the sequence when **editing** an existing `<NNN>-plan.md`; for a **new** plan file, always use the **next** free `NNN`.  
-- A **plan** file is not a full task spec: it may reference follow-up work (e.g. run **improve-story** per slice) if that keeps the plan lean.
+**Good output:** Ordered work, explicit risks and open questions, correct path echoed to the user.
+
+## Create vs Update Guidance
+
+| Situation | Action |
+|-----------|--------|
+| **New** plan (default) | Compute **next** `<NNN>`; **create** `ai-specs/plan/<NNN>-plan.md`. |
+| **Revise** existing `ai-specs/plan/<NNN>-plan.md` | **Edit that file only**; **do not** change `<NNN>`; **do not** create a second file unless the user wants a **forked** plan (then use **next** `<NNN>` and reference the prior file in **Source**). |
+| User did not specify which plan to update | **Read** `ai-specs/plan/`; if ambiguous, ask **one** question or default to **new** `<NNN>` and note the assumption in **Source**. |
+| Duplicate sections | **Merge** into a single section per heading; remove duplicate **H1**s. |
+
+**Overwrite rule:** Never replace an existing `<NNN>-plan.md` with unrelated content without user confirmation.
+
+## Common Mistakes to Avoid
+
+- Bumping `<NNN>` when **editing** an existing plan file.
+- Using **improve-story** task template for a **plan** (wrong artifact).
+- Putting secrets in **Source** or body—**redact**.
