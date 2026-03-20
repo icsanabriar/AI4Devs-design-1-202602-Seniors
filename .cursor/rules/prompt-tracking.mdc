@@ -1,39 +1,53 @@
 ---
-description: Track every prompt in prompts.md with timestamp, agent, and redaction
+description: MANDATORY append of every user prompt to LTI-ICS/prompts.md (ISO time, agent, redaction)
 alwaysApply: true
 ---
 
-# Prompt tracking
+# Prompt tracking (mandatory)
 
-For every user prompt in this workspace conversation, update `prompts.md` as an append-only log.
+This rule **must be executed**, not interpreted as optional background guidance.
 
-## Logging requirements
+After **every** user message that you answer in this workspace (including short follow-ups), you **must** persist that user message to **`LTI-ICS/prompts.md`** using a real **filesystem edit** (create `LTI-ICS/` and the file if needed) **in the same turn as your reply**, unless the only possible action is a refusal with no file tool available.
 
-- **File:** `prompts.md` at repository root.
-- **Create if missing:** initialize with `# Prompts log` as the first line.
-- **Append only:** always add new entries at the end of the file; do not rewrite prior entries.
-- **Timestamp:** include the prompt timestamp in **ISO 8601** format.
-- **Agent:** include the agent used for the response.
-- **Prompt body:** include the user prompt text, unless redaction is required.
-- **Separator:** place `---` between entries.
+> **Single log file:** `<repo>/LTI-ICS/prompts.md`. Do **not** write prompt history to `prompts.md` at the repository root (that path is obsolete for this project).
 
-## Entry format (required)
+## Algorithm (follow in order)
+
+1. **Timestamp:** Use **UTC** in ISO 8601, e.g. `2026-03-19T21:45:03Z`. If you cannot access a message-specific time, use **current UTC** at the moment you write the log entry (do not omit the log for this reason).  
+2. **Agent:** Set `## Agent:` to the active Cursor mode or subagent if known, e.g. `Chat`, `Composer`, `Agent`, `architect`, `product-manager`. If unknown, use `Cursor (unspecified mode)`.  
+3. **Redact** the prompt body per **Redaction policy** before writing.  
+4. **Read** `LTI-ICS/prompts.md` if it exists. If missing, create **`LTI-ICS/`** and the file with exactly this first line, then a blank line:  
+   `# Prompts log`  
+5. **Append** one new block at the **end** of the file:  
+   - If the file already has content **after** the header, insert a single line `---` **before** the new block (separator **between** entries).  
+   - Do **not** duplicate `---` at the very top of the file.  
+6. **Append-only:** never delete or rewrite previous entries; only add to the end.
+
+## Entry format (required — replace angle-bracket placeholders)
 
 ```markdown
-# Prompt - Timestamp (iso 8601)
-## Agent: <used agent>
-<prompt>
+# Prompt - <YYYY-MM-DDTHH:mm:ssZ>
+## Agent: <agent label>
+<verbatim or redacted user prompt, can be multiple lines>
 ```
 
-Use the exact structure above, replacing placeholders:
-- `Timestamp (iso 8601)` with the actual timestamp (e.g. `2026-03-19T21:45:03Z`)
-- `<used agent>` with the responding agent name
-- `<prompt>` with the prompt content (redacted if needed)
+Example (separator between this and a prior entry):
+
+```markdown
+---
+# Prompt - 2026-03-19T21:45:03Z
+## Agent: Agent
+Summarize recent commits.
+```
 
 ## Redaction policy (required)
 
-If the prompt includes secrets or confidential information, redact sensitive parts before writing to `prompts.md`.
+If the prompt includes secrets or confidential information, redact before writing.
 
-- Replace sensitive fragments with `[REDACTED]`.
-- Keep enough non-sensitive context so the prompt intent is still understandable.
-- If the entire prompt is sensitive, log `[REDACTED]` as the prompt body.
+- Replace sensitive fragments with `[REDACTED]` (optionally `[REDACTED: api-key]`).  
+- Keep enough context so the intent remains clear.  
+- If the entire prompt is sensitive, log the heading lines and `[REDACTED]` as the body.
+
+## Why entries were missing before
+
+Rules alone do not write files: the assistant must **call tools** to update `LTI-ICS/prompts.md`. Treat steps **1–6** as a checklist **every** reply.

@@ -6,9 +6,9 @@ alwaysApply: false
 
 # LTI deliverable content checklist
 
-Applies to Markdown under `LTI-<INITIALS>/` (main design doc and `prompts.md`).
+Applies to Markdown under `LTI-ICS/` (main design doc and `prompts.md`).
 
-## Main design document (`LTI-<INITIALS>.md`)
+## Main design document (`LTI-ICS.md`)
 
 Ensure the single consolidated document includes:
 

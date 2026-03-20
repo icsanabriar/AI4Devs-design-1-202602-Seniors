@@ -22,9 +22,9 @@ This repository is a **collaborative course workspace** for analyzing and design
 
 ## Delivery layout (per student / team)
 
-- Create a folder named with initials, e.g. `LTI-ARM` (pattern: `LTI-<INITIALS>`).
+- Create a folder named `LTI-ICS`.
 - Inside that folder:
-  - **One** Markdown file for the full design: same base name as the folder, e.g. `LTI-ARM.md`.
+  - **One** Markdown file for the full design: same base name as the folder, e.g. `LTI-ICS.md`.
   - **`prompts.md`** — all prompts used with AI assistants (required; separate from the main doc).
 
 ## Collaboration and Git
