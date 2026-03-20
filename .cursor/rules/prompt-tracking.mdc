@@ -1,0 +1,39 @@
+---
+description: Track every prompt in prompts.md with timestamp, agent, and redaction
+alwaysApply: true
+---
+
+# Prompt tracking
+
+For every user prompt in this workspace conversation, update `prompts.md` as an append-only log.
+
+## Logging requirements
+
+- **File:** `prompts.md` at repository root.
+- **Create if missing:** initialize with `# Prompts log` as the first line.
+- **Append only:** always add new entries at the end of the file; do not rewrite prior entries.
+- **Timestamp:** include the prompt timestamp in **ISO 8601** format.
+- **Agent:** include the agent used for the response.
+- **Prompt body:** include the user prompt text, unless redaction is required.
+- **Separator:** place `---` between entries.
+
+## Entry format (required)
+
+```markdown
+# Prompt - Timestamp (iso 8601)
+## Agent: <used agent>
+<prompt>
+```
+
+Use the exact structure above, replacing placeholders:
+- `Timestamp (iso 8601)` with the actual timestamp (e.g. `2026-03-19T21:45:03Z`)
+- `<used agent>` with the responding agent name
+- `<prompt>` with the prompt content (redacted if needed)
+
+## Redaction policy (required)
+
+If the prompt includes secrets or confidential information, redact sensitive parts before writing to `prompts.md`.
+
+- Replace sensitive fragments with `[REDACTED]`.
+- Keep enough non-sensitive context so the prompt intent is still understandable.
+- If the entire prompt is sensitive, log `[REDACTED]` as the prompt body.

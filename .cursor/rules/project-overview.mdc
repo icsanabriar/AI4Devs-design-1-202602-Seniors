@@ -1,0 +1,35 @@
+---
+description: LTI ATS design exercise — repo purpose, delivery layout, collaboration
+alwaysApply: true
+---
+
+# LTI design exercise (AI4Devs)
+
+This repository is a **collaborative course workspace** for analyzing and designing a software system. Students contribute folders via pull requests; maintainers merge into a shared base.
+
+## Product context
+
+- **Client**: LTI, a startup building a next-generation **ATS (Applicant Tracking System)**.
+- **Nothing is implemented yet** — work is **design and documentation** (product/analysis mindset).
+- **Differentiators to reflect** in the design: HR efficiency, real-time collaboration (recruiters ↔ managers), automations, AI assistance across tasks.
+
+## Design phases to cover (in documentation)
+
+1. Research and analysis  
+2. Use cases  
+3. Data modeling  
+4. High-level design  
+
+## Delivery layout (per student / team)
+
+- Create a folder named with initials, e.g. `LTI-ARM` (pattern: `LTI-<INITIALS>`).
+- Inside that folder:
+  - **One** Markdown file for the full design: same base name as the folder, e.g. `LTI-ARM.md`.
+  - **`prompts.md`** — all prompts used with AI assistants (required; separate from the main doc).
+
+## Collaboration and Git
+
+- **Pull the latest** from the default branch before pushing changes to reduce merge conflicts.
+- Submit work via **pull request**; multiple contributor folders are expected.
+
+When helping with this repo, prefer edits inside the contributor’s `LTI-*` folder unless the task is global (e.g. README, shared assets).
