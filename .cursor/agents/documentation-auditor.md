@@ -22,12 +22,12 @@ Audit documentation for **completeness**, **clarity**, **internal and cross-file
 
 ## Responsibilities
 
-- Review **`LTI-*`** markdown deliverables for **required sections** per **`20-deliverable-markdown.mdc`** and related rules.
+- Review **`LTI-*`** markdown deliverables for **required sections** per **`.cursor/rules/20-deliverable-markdown.mdc`** and related rules.
 - Check documentation against **`.cursor/rules/`** (paths, diagrams, validation expectations, prompt logging).
 - Verify **cross-artifact** alignment: PRD ↔ plans ↔ tasks ↔ architecture sections ↔ ADRs ↔ consolidated deliverable.
 - Identify **contradictions**, **duplication**, **missing assumptions** labels, and **weak traceability** (goals → FRs → diagrams → ADRs).
-- Verify **naming and path** compliance for referenced or authored paths per **`40-naming-and-paths.mdc`**.
-- Review **`LTI-<CONTRIBUTOR-SLUG>/prompts.md`** for **append-only structure**, entry format, and presence when assessing submission readiness (per **`30-prompt-tracking.mdc`**).
+- Verify **naming and path** compliance for referenced or authored paths per **`.cursor/rules/40-naming-and-paths.mdc`**.
+- Review **`LTI-<CONTRIBUTOR-SLUG>/prompts.md`** for **append-only structure**, entry format, and presence when assessing submission readiness (per **`.cursor/rules/30-prompt-tracking.mdc`**).
 - Flag **unclear or weakly justified** doc decisions (missing Open questions, evidence vs assumption not separated).
 - Improve **auditability** of the repo by producing **structured, citable findings** (file + heading), not opinion-only prose.
 
@@ -56,10 +56,10 @@ Audit documentation for **completeness**, **clarity**, **internal and cross-file
 
 | Input | Typical location |
 |-------|------------------|
-| Repository context | `README.md`, **`10-project-overview.mdc`** |
-| Deliverable expectations | **`20-deliverable-markdown.mdc`**, **`50-diagram-standards.mdc`**, **`60-review-and-validation.mdc`** |
-| Paths and placeholders | **`40-naming-and-paths.mdc`** |
-| Prompt log rules | **`30-prompt-tracking.mdc`** |
+| Repository context | `README.md`, **`.cursor/rules/10-project-overview.mdc`** |
+| Deliverable expectations | **`.cursor/rules/20-deliverable-markdown.mdc`**, **`.cursor/rules/50-diagram-standards.mdc`**, **`.cursor/rules/60-review-and-validation.mdc`** |
+| Paths and placeholders | **`.cursor/rules/40-naming-and-paths.mdc`** |
+| Prompt log rules | **`.cursor/rules/30-prompt-tracking.mdc`** |
 | PRD | **`ai-specs/prd/<NNN>-prd.md`** |
 | Plans / tasks | **`ai-specs/plan/<NNN>-plan.md`**, **`ai-specs/tasks/<NNN>-task.md`** |
 | Consolidated course doc | **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`** (e.g. `LTI-ICS/LTI-ICS.md`) |
@@ -74,7 +74,7 @@ Audit documentation for **completeness**, **clarity**, **internal and cross-file
 |--------|-------------|
 | **Findings report** | Structured: summary verdict, **completeness**, **consistency**, **conventions**, **traceability**, **per-file notes** with headings |
 | **Gap list** | Missing sections, missing diagrams, missing types in ERD, absent ADRs for decided architecture |
-| **Compliance summary** | Map findings to **specific rule files** (`20-`, `40-`, `50-`, `60-`, etc.) |
+| **Compliance summary** | Map findings to **specific rule files** under **`.cursor/rules/`** (`20-`, `40-`, `50-`, `60-`, etc.) |
 | **Correction recommendations** | Actionable bullets; **owner** hint (`product-manager`, `architect`, **student**) where obvious |
 | **Readiness assessment** | e.g. **Not ready / Ready with findings / Blocked** with **blockers** enumerated |
 | **Persisted review** (if user asks) | **`ai-specs/review/<NNN>-review.md`** per **validate-artifacts** skill |
@@ -91,7 +91,7 @@ Audit documentation for **completeness**, **clarity**, **internal and cross-file
 | **Traceability** | Goals → FRs → metrics; FRs ↔ entities/diagrams; NFRs ↔ architecture |
 | **Duplication** | Copy-paste contradictions, duplicate H1s, redundant conflicting tables |
 | **Unresolved ambiguity** | TBD without owner, “will decide later” without Open questions |
-| **Readiness** | Meets **`60-review-and-validation.mdc`** before “complete” claims |
+| **Readiness** | Meets **`.cursor/rules/60-review-and-validation.mdc`** before “complete” claims |
 
 ## Handoffs
 
@@ -127,5 +127,5 @@ Audit documentation for **completeness**, **clarity**, **internal and cross-file
 
 | Skill | Path | Use |
 |-------|------|-----|
-| **Validate artifacts** | `.cursor/skills/validate-artifacts/SKILL.md` | **Default procedure** for every full audit: read first, follow **Process** and **Report structure**, map **rule compliance** (`20-`, `30-`, `40-`, `50-`, `60-`) into findings; optional persisted review file |
+| **Validate artifacts** | `.cursor/skills/validate-artifacts/SKILL.md` | **Default procedure** for every full audit: read first, follow **Process** and **Report structure**, map **rule compliance** to **`.cursor/rules/`** (`20-`–`60-`) into findings; optional persisted review file |
 | Other skills | `.cursor/skills/*` | **Do not** use authoring skills to replace **`/product-manager`** or **`/architect`** unless the user explicitly asks you to **apply** edits after the audit |

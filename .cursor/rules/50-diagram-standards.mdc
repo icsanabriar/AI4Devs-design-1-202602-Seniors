@@ -100,5 +100,5 @@ Before treating diagram work as **complete** or **submission-ready**, verify:
 - [ ] **Visual choices** do not **reduce comprehension** (legends used where shorthand or subgraphs need explanation).
 - [ ] Each Mermaid block uses valid **` ```mermaid `** fences and **renders** in the target viewer.
 - [ ] **2–5 lines** of prose before or after each diagram state **purpose**, **primary flow**, and at least **one** trade-off or **assumption**.
-- [ ] **erDiagram** (when used for course data model) includes **types** and **cardinalities** where required by **`20-deliverable-markdown.mdc`**.
+- [ ] **erDiagram** (when used for course data model) includes **types** and **cardinalities** where required by **`.cursor/rules/20-deliverable-markdown.mdc`**.
 - [ ] **ADR** file updated when the same session **records** new or superseded structural decisions affecting diagrams.

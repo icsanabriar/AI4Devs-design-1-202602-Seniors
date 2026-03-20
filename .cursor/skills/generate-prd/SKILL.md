@@ -47,7 +47,7 @@ ai-specs/prd/<NNN>-prd.md
 
 1. Parse the description; **one** clarifying question only if **blocking**; otherwise use **Open questions** in the PRD.
 2. Resolve **create vs update** target path (below).
-3. Fill **PRD template**; add **Lean Canvas**, **Use cases** (three), and course-oriented sections when supporting **`ReadMe.md`** / `LTI-*` work.
+3. Fill **PRD template**; add **Lean Canvas**, **Use cases** (three), and course-oriented sections when supporting **`README.md`** / `LTI-*` work.
 4. Reply with **exact path** and a **one-paragraph** scope summary.
 
 ## PRD template (required sections)
@@ -108,7 +108,7 @@ Use this outline; adapt depth to input size.
 - **Automations & AI:** scoring, scheduling assistance, drafting, **human-in-the-loop** where decisions affect candidates.  
 - **Non-functional:** privacy, retention, audit trails, accessibility, performance, integrations (HRIS, calendar, email).
 
-## Alignment with `ReadMe.md` (LTI / AI4Devs deliverable)
+## Alignment with `README.md` (LTI / AI4Devs deliverable)
 
 When the PRD supports the **course bundle** (single **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`** — basename matches folder, e.g. **`LTI-ICS/LTI-ICS.md`**), ensure the PRD (or export into that file) can supply:
 

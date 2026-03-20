@@ -37,7 +37,7 @@ Remove ambiguous artifact paths (e.g. bare `-prd.md`) so assistants produce **pr
 
 1. Contributor root MUST be **`LTI-<CONTRIBUTOR-SLUG>/`**.
 2. Main deliverable MUST be **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`** (basename MUST equal folder name).
-3. Prompt log MUST be **`LTI-<CONTRIBUTOR-SLUG>/prompts.md`** (see **`30-prompt-tracking.mdc`**).
+3. Prompt log MUST be **`LTI-<CONTRIBUTOR-SLUG>/prompts.md`** (see **`.cursor/rules/30-prompt-tracking.mdc`**).
 4. Architecture decision log MUST be **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`** (append-only ADRs per **`50-diagram-standards.mdc`** and skills).
 
 ## Prohibited behavior

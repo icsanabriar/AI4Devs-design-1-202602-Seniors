@@ -21,10 +21,10 @@ Prevent “looks complete” documentation that is **internally inconsistent**, 
 
 ## Requirements — what validation MUST check
 
-1. **Mandatory sections:** Deliverable MUST satisfy **`20-deliverable-markdown.mdc`**; PRD/plan/task files MUST satisfy their templates in **`.cursor/skills/`** when those artifacts exist.
+1. **Mandatory sections:** Deliverable MUST satisfy **`.cursor/rules/20-deliverable-markdown.mdc`**; PRD/plan/task files MUST satisfy their templates in **`.cursor/skills/`** when those artifacts exist.
 2. **Internal consistency:** No conflicting MVP scope, duplicate **H1**, broken **FR-** / **ADR-** numbering without explanation.
 3. **Cross-artifact alignment:** Goals ↔ FRs ↔ metrics (PRD); FRs ↔ diagram entity names ↔ tasks; NFRs ↔ architecture and ADRs.
-4. **Path compliance:** All new artifacts MUST comply with **`40-naming-and-paths.mdc`**.
+4. **Path compliance:** All new artifacts MUST comply with **`.cursor/rules/40-naming-and-paths.mdc`**.
 5. **Duplication:** MUST flag copy-pasted blocks that contradict each other; MUST NOT “resolve” contradictions by silent deletion without user direction.
 6. **Assumptions and evidence:** Product or compliance claims MUST be labeled **assumption**, **Open question**, or backed by cited context; MUST NOT read as verified facts when they are not.
 7. **Architecture vs requirements:** ADRs and containers MUST NOT introduce **new product requirements** without traceability to PRD, README, or explicit user instruction.
@@ -45,7 +45,7 @@ Prevent “looks complete” documentation that is **internally inconsistent**, 
 
 - [ ] Checklist in this rule addressed or explicitly marked out-of-scope with reason.
 - [ ] Contradictions listed, not hidden.
-- [ ] Path and diagram rules (`40-`, `50-`) cited when violations are found.
+- [ ] Path and diagram rules (**`.cursor/rules/40-naming-and-paths.mdc`**, **`.cursor/rules/50-diagram-standards.mdc`**) cited when violations are found.
 
 ## Reference
 

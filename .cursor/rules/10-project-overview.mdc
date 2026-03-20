@@ -41,7 +41,7 @@ Rule files use prefixes **`10-`** … **`60-`** for stable ordering and extensio
 1. Each student/team MUST use a contributor folder named **`LTI-<CONTRIBUTOR-SLUG>`** (example in this repo: **`LTI-ICS`**).
 2. Inside that folder there MUST be:
    - **Exactly one** consolidated design Markdown file: **`LTI-<CONTRIBUTOR-SLUG>.md`** (basename MUST match the folder name; example: `LTI-ICS/LTI-ICS.md`).
-   - **`prompts.md`** — log of prompts used with AI assistants (see **`30-prompt-tracking.mdc`**).
+   - **`prompts.md`** — log of prompts used with AI assistants (see **`.cursor/rules/30-prompt-tracking.mdc`**).
 
 ## Requirements (collaboration)
 

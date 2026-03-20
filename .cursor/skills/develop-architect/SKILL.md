@@ -162,7 +162,7 @@ If the turn is **purely exploratory** (no decision, rejection, or supersession),
 
 Redact secrets and confidential identifiers.
 
-### Alignment with `ReadMe.md` (LTI / AI4Devs)
+### Alignment with `README.md` (LTI / AI4Devs)
 
 When producing **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**, this skill **leads**:
 

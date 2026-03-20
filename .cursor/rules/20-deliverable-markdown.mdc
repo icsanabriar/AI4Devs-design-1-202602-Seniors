@@ -14,7 +14,7 @@ Make the **graded consolidated design document** and **`prompts.md`** complete, 
 
 - **Project-specific:** Markdown files under **`LTI-<CONTRIBUTOR-SLUG>/`** (example: **`LTI-ICS/`**).
 - **Primary target:** the single main file **`LTI-<CONTRIBUTOR-SLUG>.md`**.
-- **Secondary:** **`prompts.md`** in the same folder (content rules for prompts are also in **`30-prompt-tracking.mdc`** for logging behavior).
+- **Secondary:** **`prompts.md`** in the same folder (content rules for prompts are also in **`.cursor/rules/30-prompt-tracking.mdc`** for logging behavior).
 
 ## Requirements — main design document
 
@@ -26,7 +26,7 @@ The file **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`** MUST contain all
 4. **Three main use cases:** narrative for **each** use case AND **one diagram per use case** (Mermaid or approved equivalent).
 5. **Data model:** entities, attributes with **name and type**, and **relationships** (typed, reviewable model—not prose-only placeholders).
 6. **High-level system design:** prose **and** a diagram (Mermaid or approved equivalent).
-7. **C4-style depth:** **one** component MUST be drilled into **in depth** (diagram + explanation), consistent with **`50-diagram-standards.mdc`**.
+7. **C4-style depth:** **one** component MUST be drilled into **in depth** (diagram + explanation), consistent with **`.cursor/rules/50-diagram-standards.mdc`**.
 
 Assistants MUST use **Mermaid** where the course expects diagrams unless the user explicitly chooses another repo-friendly format that still renders in the target viewer.
 
@@ -34,7 +34,7 @@ Assistants MUST use **Mermaid** where the course expects diagrams unless the use
 
 1. The file MUST exist in the contributor folder and MUST be part of submission hygiene.
 2. Content MUST be **readable** (e.g. grouped by phase or artifact).
-3. Logging of **new** prompts MUST follow **`30-prompt-tracking.mdc`** (append-only, format, timestamps).
+3. Logging of **new** prompts MUST follow **`.cursor/rules/30-prompt-tracking.mdc`** (append-only, format, timestamps).
 
 ## Prohibited behavior
 

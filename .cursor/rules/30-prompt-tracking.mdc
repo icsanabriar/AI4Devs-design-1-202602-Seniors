@@ -12,7 +12,7 @@ Guarantee an **append-only**, **auditable** log of user prompts so course review
 ## Scope
 
 - **Global (this repository):** every assistant turn that produces a user-visible reply in this workspace.
-- **Project-specific path:** log file inside the active contributor folder — **`LTI-<CONTRIBUTOR-SLUG>/prompts.md`** (example: **`LTI-ICS/prompts.md`** for the ICS contributor layout described in **`10-project-overview.mdc`**).
+- **Project-specific path:** log file inside the active contributor folder — **`LTI-<CONTRIBUTOR-SLUG>/prompts.md`** (example: **`LTI-ICS/prompts.md`** for the ICS contributor layout described in **`.cursor/rules/10-project-overview.mdc`**).
 
 ## Requirements
 
