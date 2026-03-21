@@ -15,7 +15,7 @@ fix(prompts): Correct numbering order in prompts log
 ```
 
 ```text
-chore(repo): Add contributor folder layout note to README
+chore(repo): Add contributor folder layout note to ReadMe
 ```
 
 ```text

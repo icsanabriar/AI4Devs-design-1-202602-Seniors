@@ -89,7 +89,7 @@ Collect what the user points at (paths relative to repo root). Typical sets:
 5. **Conventions** — Paths match **`ai-specs/prd/<NNN>-prd.md`**, **`ai-specs/plan/<NNN>-plan.md`**, **`ai-specs/tasks/<NNN>-task.md`** (regex `^\d{3}-(prd|plan|task)\.md$`); contributor layout **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`** basename matches folder; Mermaid blocks fenced with **`mermaid`**. Where diagrams exist, flag violations of **`.cursor/rules/50-diagram-standards.mdc`** (naming across diagrams, C4 level discipline, unsupported components).
 6. **Prompt log (when in scope)** — If **`LTI-<CONTRIBUTOR-SLUG>/prompts.md`** is included, check append-only pattern, entry headings (`# Prompt - …`, `## Agent:`), and separators per **`.cursor/rules/30-prompt-tracking.mdc`** (do not audit prompt *content* for product truth).
 7. **Evidence vs assumptions** — Flag marketing or compliance claims without **Open questions**, **Assumptions**, or cited source.
-8. **Architecture vs requirements** — Flag ADRs or containers that introduce **new product scope** not traceable to PRD/README/user instruction.
+8. **Architecture vs requirements** — Flag ADRs or containers that introduce **new product scope** not traceable to PRD/**`ReadMe.md`**/user instruction.
 9. **Verdict** — **Blocked** if any **integrity** issue (wrong overwrite, duplicate file for same intent, contradictory “source of truth”). **Pass with findings** if issues are fixable without renegotiating intent.
 
 **Governance alignment:** Cross-check applicable **`.cursor/rules/`** (`20-`, `30-`, `40-`, `50-`, `60-`) when the validation scope includes those topics; **`.cursor/rules/60-review-and-validation.mdc`** requires a validation pass before “complete” / submission-ready claims.

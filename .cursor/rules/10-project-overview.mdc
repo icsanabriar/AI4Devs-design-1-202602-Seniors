@@ -55,5 +55,5 @@ Rule files use prefixes **`10-`** … **`60-`** for stable ordering and extensio
 
 ## Verification
 
-- [ ] Assistant edits for course work default into a **`LTI-*`** folder unless the task is explicitly global (e.g. README, shared assets, `.cursor/`).
+- [ ] Assistant edits for course work default into a **`LTI-*`** folder unless the task is explicitly global (e.g. **`ReadMe.md`**, shared assets, `.cursor/`).
 - [ ] Any referenced contributor slug matches folder name and main file basename.

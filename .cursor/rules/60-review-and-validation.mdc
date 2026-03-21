@@ -27,7 +27,7 @@ Prevent “looks complete” documentation that is **internally inconsistent**, 
 4. **Path compliance:** All new artifacts MUST comply with **`.cursor/rules/40-naming-and-paths.mdc`**.
 5. **Duplication:** MUST flag copy-pasted blocks that contradict each other; MUST NOT “resolve” contradictions by silent deletion without user direction.
 6. **Assumptions and evidence:** Product or compliance claims MUST be labeled **assumption**, **Open question**, or backed by cited context; MUST NOT read as verified facts when they are not.
-7. **Architecture vs requirements:** ADRs and containers MUST NOT introduce **new product requirements** without traceability to PRD, README, or explicit user instruction.
+7. **Architecture vs requirements:** ADRs and containers MUST NOT introduce **new product requirements** without traceability to PRD, **`ReadMe.md`**, or explicit user instruction.
 
 ## Output of validation
 

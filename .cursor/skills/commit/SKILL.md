@@ -69,7 +69,7 @@ feat(dn): Add new diagram for candidates component
 | `rules` | `.cursor/rules` |
 | `skills` | `.cursor/skills` |
 | `review` | Validation reports under `ai-specs/review/` |
-| `repo` | Root README, shared repo layout, `.gitignore`, CI |
+| `repo` | Root **`ReadMe.md`**, shared repo layout, `.gitignore`, CI |
 
 Unrelated changes → **separate commits**; avoid one vague message covering multiple scopes.
 

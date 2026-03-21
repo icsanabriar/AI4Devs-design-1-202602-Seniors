@@ -2,7 +2,7 @@
 
 This folder configures **Cursor** for the LTI / AI4Devs design exercise: **agents** (specialized subagents), **skills** (repeatable procedures), and **rules** (governance). The goal is consistent, auditable documentation—not application code.
 
-**Independence from root docs:** Repository-root **`README.md`** and **`ReadMe.md`** are **not** part of `.cursor/` and **must not** be required to link here. Governance for assistants using this setup is defined under **`.cursor/rules/`** and this file.
+**Independence from root docs:** Repository-root **`ReadMe.md`** (course brief) is **not** part of `.cursor/` and **must not** be required to link here. Governance for assistants using this setup is defined under **`.cursor/rules/`** and this file.
 
 ## Repository map
 
@@ -164,7 +164,7 @@ Invoke via Cursor’s agent picker (e.g. **`/architect`**, **`/product-manager`*
 
 ## Recommended workflow (day-to-day)
 
-1. **Read context:** **`.cursor/rules/10-project-overview.mdc`** (authoritative for repo purpose, `LTI-*` layout, collaboration), then your contributor folder convention (`LTI-<CONTRIBUTOR-SLUG>/`). Optionally read any instructor course brief at the repository root if present (filename varies, e.g. `README.md` or `ReadMe.md`); that is **outside** `.cursor/` and does **not** need to reference this guide.
+1. **Read context:** **`.cursor/rules/10-project-overview.mdc`** (authoritative for repo purpose, `LTI-*` layout, collaboration), then your contributor folder convention (`LTI-<CONTRIBUTOR-SLUG>/`). Optionally read the instructor course brief at the repository root if present (**`ReadMe.md`**); that is **outside** `.cursor/` and does **not** need to reference this guide.
 2. **Pick an agent** matching the task (product vs architecture vs audit)—see [Agents](#agents).
 3. **Open the right skill(s)** from the agent definition or this guide; follow **Create vs Update** in each `SKILL.md` so you do not duplicate `NNN` files incorrectly.
 4. **Produce or edit artifacts** in the approved paths (**`.cursor/rules/40-naming-and-paths.mdc`**).
@@ -243,5 +243,5 @@ Use when reviewing a PR or periodically auditing the repo tooling.
 
 ## Related documentation
 
-- **Course brief (optional, repo root):** may exist as `README.md`, `ReadMe.md`, or another name; not maintained under `.cursor/`. **No** requirement that it link to this guide.
+- **Course brief (repo root):** **`ReadMe.md`** in this repository; not maintained under `.cursor/`. **No** requirement that it link to this guide.
 - **Contributor prompt log:** `LTI-<CONTRIBUTOR-SLUG>/prompts.md` (per **`.cursor/rules/30-prompt-tracking.mdc`**)

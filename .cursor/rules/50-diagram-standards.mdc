@@ -40,7 +40,7 @@ This rule applies to **any Markdown artifact** under the globs above that contai
 
 ### Semantic consistency
 
-1. Diagrams MUST **align** with **documented** requirements, **scope**, **constraints**, and **architecture intent** (e.g. `README.md`, PRD, **`LTI-*`** deliverable prose, **`ai-specs/**`**, ADRs).
+1. Diagrams MUST **align** with **documented** requirements, **scope**, **constraints**, and **architecture intent** (e.g. **`ReadMe.md`**, PRD, **`LTI-*`** deliverable prose, **`ai-specs/**`**, ADRs).
 2. Diagrams MUST NOT introduce **components**, **actors**, **services**, **integrations**, or **data stores** that are **not** supported by those artifacts or by an explicit **Assumption** / **Open questions** entry in writing.
 3. **C4 abstraction levels** MUST keep their **intended meaning** (see **C4 level discipline** below).
 4. **Data stores**, **external systems**, and **internal application elements** MUST be **visually and semantically distinguishable** (labels, grouping, or prose legend—whichever fits the diagram type).
@@ -84,7 +84,7 @@ This rule applies to **any Markdown artifact** under the globs above that contai
 - MUST NOT publish **cluttered** or **structurally unreadable** diagrams when splitting or simplifying is feasible.
 - MUST NOT use diagrams as **vague illustrations** with **no** architectural or requirements meaning.
 - MUST NOT place **implementation-level** detail in a **context** diagram except as clearly framed **notes**, not as false precision.
-- MUST NOT **contradict** `README.md`, PRD, ADRs, or consolidated architecture prose.
+- MUST NOT **contradict** **`ReadMe.md`**, PRD, ADRs, or consolidated architecture prose.
 - MUST NOT use diagrams as **pure decoration** without adjacent purpose/trade-off text (see **Verification**).
 
 ## Verification

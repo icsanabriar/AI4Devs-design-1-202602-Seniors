@@ -22,7 +22,7 @@ Turn **stated requirements and constraints** into **coherent technical structure
 
 ## When Not to Use
 
-- **Replacing** product strategy, MVP prioritization, or **problem framing** without PRD/README/user alignment → product owner / **generate-prd**.
+- **Replacing** product strategy, MVP prioritization, or **problem framing** without PRD/**`ReadMe.md`**/user alignment → product owner / **generate-prd**.
 - **Phased delivery planning** as the only artifact → **plan-story**.
 - **Single story** acceptance specs → **improve-story**.
 - **Git commits** only → **commit**.
@@ -30,7 +30,7 @@ Turn **stated requirements and constraints** into **coherent technical structure
 
 ## Inputs
 
-- **Requirements source:** `README.md`, **`ai-specs/prd/<NNN>-prd.md`**, **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**, or user-provided constraints.
+- **Requirements source:** **`ReadMe.md`**, **`ai-specs/prd/<NNN>-prd.md`**, **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**, or user-provided constraints.
 - **Contributor slug** for ADR + deliverable paths: e.g. **`LTI-ICS`** (folder name = basename of main `.md`).
 - Optional: existing **ADR** file **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`**.
 
@@ -162,7 +162,7 @@ If the turn is **purely exploratory** (no decision, rejection, or supersession),
 
 Redact secrets and confidential identifiers.
 
-### Alignment with `README.md` (LTI / AI4Devs)
+### Alignment with `ReadMe.md` (LTI / AI4Devs)
 
 When producing **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**, this skill **leads**:
 
@@ -204,7 +204,7 @@ When producing **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**, this skil
 - Logging ADRs to a **hard-coded** folder that does not match the student’s **`LTI-*`** slug—always use **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`** for the active contributor.
 - **Technology-first** stacks with no mapped requirements.
 - **Identical** diagram at every C4 level without added detail.
-- **Silent** product scope expansion in architecture not traceable to PRD/README.
+- **Silent** product scope expansion in architecture not traceable to PRD/**`ReadMe.md`**.
 
 ## Deliverable checklist (milestone)
 
