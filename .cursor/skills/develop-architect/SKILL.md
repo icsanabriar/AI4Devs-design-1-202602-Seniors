@@ -30,7 +30,7 @@ Turn **stated requirements and constraints** into **coherent technical structure
 
 ## Inputs
 
-- **Requirements source:** **`ReadMe.md`**, **`LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md`**, **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**, or user-provided constraints.
+- **Requirements source:** repository-root **`ReadMe.md`** (course brief; not **`README.md`** or **`.cursor/README.md`**), **`LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md`**, **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**, or user-provided constraints.
 - **Contributor slug** for ADR + deliverable paths: e.g. **`LTI-ICS`** (folder name = basename of main `.md`).
 - Optional: existing **ADR** file **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`**.
 

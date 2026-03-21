@@ -34,6 +34,8 @@ Paths below are relative to **`.cursor/`** (this tree as of maintenance; extend 
 | `skills/generate-prd/SKILL.md` |
 | `skills/validate-artifacts/SKILL.md` |
 
+**Active skills (default workflow):** **`develop-architect`**, **`generate-prd`**, **`validate-artifacts`**, **`commit`** only—see [Skills inventory](#skills-inventory).
+
 ### Placeholder lexicon (paths in docs)
 
 | Token | Meaning |
@@ -133,6 +135,8 @@ Invoke via Cursor’s agent picker (e.g. **`/architect`**, **`/product-manager`*
 ---
 
 ## Skills inventory
+
+**Intended active skills** for this repository’s default operating model:
 
 | Skill | Folder | Purpose | Primary agents | Create / update / validate |
 |-------|--------|---------|----------------|----------------------------|
