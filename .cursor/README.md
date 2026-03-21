@@ -9,7 +9,7 @@ This folder configures **Cursor** for the LTI / AI4Devs design exercise: **agent
 | Path | Contents |
 |------|----------|
 | [`.cursor/agents/`](agents/) | Agent definitions: `architect.md`, `product-manager.md`, `documentation-auditor.md` |
-| [`.cursor/skills/`](skills/) | One `SKILL.md` per skill (subfolders: `develop-architect`, `generate-prd`, `plan-story`, `improve-story`, `validate-artifacts`, `commit`) plus [`commit/examples.md`](skills/commit/examples.md) |
+| [`.cursor/skills/`](skills/) | One `SKILL.md` per skill (subfolders: `develop-architect`, `generate-prd`, `validate-artifacts`, `commit`) plus [`commit/examples.md`](skills/commit/examples.md) |
 | [`.cursor/rules/`](rules/) | Numbered `.mdc` rules (`10-` … `60-`), some `alwaysApply`, some scoped by glob |
 
 ### Files on disk (authoritative inventory)
@@ -32,8 +32,6 @@ Paths below are relative to **`.cursor/`** (this tree as of maintenance; extend 
 | `skills/commit/examples.md` |
 | `skills/develop-architect/SKILL.md` |
 | `skills/generate-prd/SKILL.md` |
-| `skills/improve-story/SKILL.md` |
-| `skills/plan-story/SKILL.md` |
 | `skills/validate-artifacts/SKILL.md` |
 
 ### Placeholder lexicon (paths in docs)
@@ -41,10 +39,10 @@ Paths below are relative to **`.cursor/`** (this tree as of maintenance; extend 
 | Token | Meaning |
 |-------|---------|
 | **`<CONTRIBUTOR-SLUG>`** | Contributor folder suffix: root is **`LTI-<CONTRIBUTOR-SLUG>/`** (example: `ICS` → `LTI-ICS/`). |
-| **`<NNN>`** | Three-digit zero-padded index **`001`–`999`** for files under **`ai-specs/prd/`**, **`plan/`**, **`tasks/`**, **`review/`** per **`.cursor/rules/40-naming-and-paths.mdc`**. |
+| **`<NNN>`** | Three-digit zero-padded index **`001`–`999`**: PRDs under **`LTI-<CONTRIBUTOR-SLUG>/`**; **`ai-specs/plan/`**, **`tasks/`**, **`review/`** per **`.cursor/rules/40-naming-and-paths.mdc`**. |
 | **`LTI-ICS`** (in examples) | Concrete example slug only—not a second placeholder pattern. |
 
-Do **not** use malformed stems such as bare **`-prd.md`** or **`LTI-/LTI-.md`**; always show **`ai-specs/prd/<NNN>-prd.md`** or **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**.
+Do **not** use malformed stems such as bare **`-prd.md`** or **`LTI-/LTI-.md`**; always show **`LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md`** or **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**.
 
 ### Authoritative rules (single stack)
 
@@ -80,7 +78,7 @@ Artifacts         →  LTI-* deliverables, ai-specs/*, prompts.md, ARD.md
 ## Collaboration model
 
 - **Humans** own the contributor folder (e.g. `LTI-ICS/`) and PRs.
-- **Product-oriented** edits → **`/product-manager`** (or its skills: `generate-prd`, plans/tasks for product phasing).
+- **Product-oriented** edits → **`/product-manager`** (or its skill: `generate-prd`; optional `ai-specs/plan/` / `tasks/` files follow **`.cursor/rules/40-naming-and-paths.mdc`**).
 - **Technical design** → **`/architect`** + **`develop-architect`** (diagrams, typed ERD, ADRs).
 - **Review before submit** → **`/documentation-auditor`** + **`validate-artifacts`** skill (structured report).
 - **Never** use an agent to silently override another role’s ownership—use **handoffs** (see agent files).
@@ -139,13 +137,13 @@ Invoke via Cursor’s agent picker (e.g. **`/architect`**, **`/product-manager`*
 | Skill | Folder | Purpose | Primary agents | Create / update / validate |
 |-------|--------|---------|----------------|----------------------------|
 | **develop-architect** | [`skills/develop-architect/`](skills/develop-architect/) | Architecture drivers, C4 Mermaid, clean-architecture framing, ADR append rules | **`/architect`** | **Create/update** design text & diagrams |
-| **generate-prd** | [`skills/generate-prd/`](skills/generate-prd/) | PRD template → `ai-specs/prd/<NNN>-prd.md` | **`/product-manager`** | **Create/update** PRD files |
-| **plan-story** | [`skills/plan-story/`](skills/plan-story/) | Phased delivery plan → `ai-specs/plan/<NNN>-plan.md` | PM or architect (sequencing) | **Create** new plan file; **update** same `NNN` in place |
-| **improve-story** | [`skills/improve-story/`](skills/improve-story/) | Task spec + AC → `ai-specs/tasks/<NNN>-task.md` | PM or architect | **Create** new task file; **update** same `NNN` in place |
+| **generate-prd** | [`skills/generate-prd/`](skills/generate-prd/) | PRD template → `LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md` (default **`LTI-ICS/`**) | **`/product-manager`** | **Create/update** PRD files |
 | **validate-artifacts** | [`skills/validate-artifacts/`](skills/validate-artifacts/) | Cross-doc validation report; optional `ai-specs/review/<NNN>-review.md` | **`/documentation-auditor`** (default), anyone | **Validation-oriented** (read-only on sources unless user asks to apply fixes) |
 | **commit** | [`skills/commit/`](skills/commit/) | Conventional commit messages | Any agent after doc changes | **Git snapshot** (not doc authoring) |
 
 **When not to use:** Each skill’s `SKILL.md` has **When Not to Use**—e.g. `validate-artifacts` is not legal/compliance review; `commit` is not for fixing content without user intent.
+
+**Optional `ai-specs` plans and tasks:** Paths **`ai-specs/plan/<NNN>-plan.md`** and **`ai-specs/tasks/<NNN>-task.md`** remain valid per **`.cursor/rules/40-naming-and-paths.mdc`** (next `<NNN>` on create; **update in place** when editing the same logical artifact). This workspace does **not** ship separate skills for those templates in the current course run.
 
 ---
 
@@ -180,7 +178,7 @@ Invoke via Cursor’s agent picker (e.g. **`/architect`**, **`/product-manager`*
 1. **Start here:** this document → skim [Agents](#agents), [Rules overview](#rules-overview-precedence-order), [Recommended workflow](#recommended-workflow-day-to-day).
 2. **Course deliverable:** read **`.cursor/rules/20-deliverable-markdown.mdc`** and create **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`** + **`prompts.md`** per **`.cursor/rules/10-project-overview.mdc`**.
 3. **Choose an agent:** product writing → **`/product-manager`**; diagrams/ERD/C4/ADR → **`/architect`**; pre-submit check → **`/documentation-auditor`**.
-4. **Avoid breaking conventions:** never use repository-root `prompts.md` for course prompts; use **`ai-specs/prd/<NNN>-prd.md`** not bare `-prd.md`.
+4. **Avoid breaking conventions:** never use repository-root `prompts.md` for course prompts; use **`LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md`** not bare `-prd.md`.
 5. **Before editing:** open the target **`SKILL.md`** for numbering rules; open **`.cursor/rules/40-naming-and-paths.mdc`** if unsure where a file belongs.
 
 ---
@@ -193,7 +191,7 @@ Invoke via Cursor’s agent picker (e.g. **`/architect`**, **`/product-manager`*
 | Skipping validation | “Looks done” but inconsistent docs | Run **`validate-artifacts`** / **`/documentation-auditor`** |
 | Ignoring rule precedence | Silent conflict with course requirements | Cite **`.cursor/rules/NN-*.mdc`**; follow it |
 | Wrong paths | Broken links, grader confusion | Use **`.cursor/rules/40-naming-and-paths.mdc`** patterns |
-| New `NNN` on **edit** | Duplicate plans/tasks | **Update in place** per plan-story / improve-story |
+| New `NNN` on **edit** | Duplicate plans/tasks | **Update in place** per **`.cursor/rules/40-naming-and-paths.mdc`** |
 | Forgetting prompt log | Fails course / audit trail | **`.cursor/rules/30-prompt-tracking.mdc`** |
 | Inconsistent diagram names | Traceability breaks | **`.cursor/rules/50-diagram-standards.mdc`** + one glossary |
 | Architect rewrites PRD intent | PM ownership violated | Hand off to **`/product-manager`** |
@@ -218,10 +216,10 @@ Use when reviewing a PR or periodically auditing the repo tooling.
 ## Examples (short)
 
 **Create a PRD**  
-→ Agent: **`/product-manager`**. Skill: **`generate-prd`**. Output: `ai-specs/prd/<NNN>-prd.md`. Then lift sections into **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`** if that’s your single deliverable.
+→ Agent: **`/product-manager`**. Skill: **`generate-prd`**. Output: **`LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md`** (default **`LTI-ICS/`**). Then lift sections into **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`** if that’s your single deliverable.
 
-**Refine a story into a task**  
-→ Skill: **`improve-story`**. Output: `ai-specs/tasks/<NNN>-task.md`. Agent: PM or architect depending on whether AC is product- or tech-led.
+**Optional plan or task markdown**  
+→ Paths: `ai-specs/plan/<NNN>-plan.md` or `ai-specs/tasks/<NNN>-task.md` per **`.cursor/rules/40-naming-and-paths.mdc`**. Agent: PM or architect as appropriate; no dedicated skill in this repo revision.
 
 **Develop architecture (HLD, ERD, C4, ADRs)**  
 → Agent: **`/architect`**. Skill: **`develop-architect`**. Rules: **`.cursor/rules/50-diagram-standards.mdc`**, **`.cursor/rules/20-deliverable-markdown.mdc`** for course sections. ADRs: **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`**.

@@ -18,7 +18,7 @@ Provide a **repeatable** validation pass over design-repo artifacts so teams cat
 - Before treating a milestone as “done” (course submit, design review, handoff).
 - After **merging** content from PRD → `LTI-*` deliverable, or after parallel agent edits.
 - When the user suspects **two documents disagree** (e.g. FR vs diagram vs ADR).
-- After applying **generate-prd**, **plan-story**, **improve-story**, or **develop-architect** to verify outputs meet this repo’s conventions.
+- After applying **generate-prd** or **develop-architect** to verify outputs meet this repo’s conventions.
 
 ## When Not to Use
 
@@ -32,7 +32,7 @@ Collect what the user points at (paths relative to repo root). Typical sets:
 
 | Kind | Path pattern (see conventions below) |
 |------|--------------------------------------|
-| PRD | `ai-specs/prd/<NNN>-prd.md` |
+| PRD | `LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md` |
 | Plan | `ai-specs/plan/<NNN>-plan.md` |
 | Task | `ai-specs/tasks/<NNN>-task.md` |
 | ADR log | `LTI-<CONTRIBUTOR-SLUG>/ARD.md` |
@@ -83,10 +83,10 @@ Collect what the user points at (paths relative to repo root). Typical sets:
 ## Process
 
 1. **Inventory** — List exact files you read; if a referenced path is missing, record it as **FAIL** (missing artifact).
-2. **Completeness** — Against the templates in **generate-prd**, **plan-story**, **improve-story**, and **develop-architect** (as applicable), verify **expected sections exist**. Treat optional sections as **N/A** only if the artifact type truly does not need them (e.g. tiny plan).
+2. **Completeness** — Against the templates in **generate-prd** and **develop-architect** (as applicable), verify **expected sections exist**. For **`ai-specs/plan/<NNN>-plan.md`** and **`ai-specs/tasks/<NNN>-task.md`** (when in scope), verify **path naming** per **`.cursor/rules/40-naming-and-paths.mdc`** and that headings/content are **internally coherent**—this repo revision has **no** mandatory section template for those file types. Treat optional sections as **N/A** only if the artifact type truly does not need them (e.g. tiny plan).
 3. **Internal consistency** — Same term for the same concept; no duplicate **H1**; **FR-** / **ADR-** numbering monotonic where used; no conflicting MVP definitions inside one file.
 4. **Cross-artifact** — Trace **goals → FRs → metrics** (PRD); **FRs ↔ diagrams** (entities/flows named consistently); **NFRs ↔ architecture** (e.g. latency claim vs sync chain); **ADRs** reference forces that appear in PRD/NFRs or are labeled **assumption**.
-5. **Conventions** — Paths match **`ai-specs/prd/<NNN>-prd.md`**, **`ai-specs/plan/<NNN>-plan.md`**, **`ai-specs/tasks/<NNN>-task.md`** (regex `^\d{3}-(prd|plan|task)\.md$`); contributor layout **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`** basename matches folder; Mermaid blocks fenced with **`mermaid`**. Where diagrams exist, flag violations of **`.cursor/rules/50-diagram-standards.mdc`** (naming across diagrams, C4 level discipline, unsupported components).
+5. **Conventions** — PRD at **`LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md`** (regex `^\d{3}-prd\.md$` in that folder); plans/tasks at **`ai-specs/plan/<NNN>-plan.md`**, **`ai-specs/tasks/<NNN>-task.md`** (regex `^\d{3}-(plan|task)\.md$`); contributor main doc **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`** basename matches folder; Mermaid blocks fenced with **`mermaid`**. Where diagrams exist, flag violations of **`.cursor/rules/50-diagram-standards.mdc`** (naming across diagrams, C4 level discipline, unsupported components).
 6. **Prompt log (when in scope)** — If **`LTI-<CONTRIBUTOR-SLUG>/prompts.md`** is included, check append-only pattern, entry headings (`# Prompt - …`, `## Agent:`), and separators per **`.cursor/rules/30-prompt-tracking.mdc`** (do not audit prompt *content* for product truth).
 7. **Evidence vs assumptions** — Flag marketing or compliance claims without **Open questions**, **Assumptions**, or cited source.
 8. **Architecture vs requirements** — Flag ADRs or containers that introduce **new product scope** not traceable to PRD/**`ReadMe.md`**/user instruction.
@@ -125,7 +125,7 @@ Collect what the user points at (paths relative to repo root). Typical sets:
 
 | Artifact | Pattern |
 |----------|---------|
-| PRD | `ai-specs/prd/<NNN>-prd.md` |
+| PRD | `LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md` |
 | Plan | `ai-specs/plan/<NNN>-plan.md` |
 | Task | `ai-specs/tasks/<NNN>-task.md` |
 | Review log (optional) | `ai-specs/review/<NNN>-review.md` |

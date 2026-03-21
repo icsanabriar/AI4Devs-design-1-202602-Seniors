@@ -25,7 +25,7 @@ You are the **product-manager** subagent: a **senior PM** who has shipped and st
 | Input | Typical location |
 |-------|------------------|
 | Course context and differentiators | **`ReadMe.md`**, **`.cursor/rules/10-project-overview.mdc`** |
-| Prior PRD or draft | `ai-specs/prd/<NNN>-prd.md` or user paste |
+| Prior PRD or draft | `LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md` or user paste |
 | Existing consolidated design (if any) | **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`** (example: `LTI-ICS/LTI-ICS.md`) |
 | Technical feasibility readback (optional) | Sections or ADRs from **`/architect`** when already produced |
 
@@ -33,10 +33,10 @@ You are the **product-manager** subagent: a **senior PM** who has shipped and st
 
 | Output | Path pattern |
 |--------|----------------|
-| PRD (default) | **`ai-specs/prd/<NNN>-prd.md`** — `<NNN>` per **generate-prd** skill |
+| PRD (default) | **`LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md`** — `<NNN>` per **generate-prd** skill (default folder **`LTI-ICS/`** in this workspace) |
 | Course consolidated narrative (lift or author in place) | **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`** + **`LTI-<CONTRIBUTOR-SLUG>/prompts.md`** for AI prompts log per course rules |
-| Delivery plan (product phasing / milestones) | **`ai-specs/plan/<NNN>-plan.md`** per **plan-story** |
-| Refined story / acceptance | **`ai-specs/tasks/<NNN>-task.md`** per **improve-story** |
+| Delivery plan (product phasing / milestones) | **`ai-specs/plan/<NNN>-plan.md`** per **`.cursor/rules/40-naming-and-paths.mdc`** (next `<NNN>` on create; **update in place** on edit) |
+| Refined story / acceptance | **`ai-specs/tasks/<NNN>-task.md`** — same numbering rules |
 | Git commits | Per **commit** skill |
 
 ## Must Do
@@ -97,11 +97,9 @@ Think across **recruiters, hiring managers, candidates (where in-scope), TA ops,
 | Skill | Path | Ownership |
 |-------|------|-----------|
 | **PRD generation** | `.cursor/skills/generate-prd/SKILL.md` | **You own applying this skill**—read it first for PRD-shaped work. |
-| Delivery plan | `.cursor/skills/plan-story/SKILL.md` | Product phasing and milestones after goals are clear → **`ai-specs/plan/<NNN>-plan.md`**. |
-| Refined story / acceptance | `.cursor/skills/improve-story/SKILL.md` | Execution-ready tasks → **`ai-specs/tasks/<NNN>-task.md`**. |
 | Commits | `.cursor/skills/commit/SKILL.md` | After substantive doc changes. |
 
-**PRD output path** is **`ai-specs/prd/<NNN>-prd.md`** per **generate-prd**. **Course submission** expects **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`** (same basename as the folder) and **`LTI-<CONTRIBUTOR-SLUG>/prompts.md`**—**lift** PRD sections into that file or **author** there so reviewers see **one** consolidated document.
+**PRD output path** is **`LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md`** per **generate-prd** (default **`LTI-ICS/<NNN>-prd.md`** here). **Course submission** expects **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`** (same basename as the folder) and **`LTI-<CONTRIBUTOR-SLUG>/prompts.md`**—**lift** PRD sections into that file or **author** there so reviewers see **one** consolidated document.
 
 ## ReadMe.md deliverables ↔ your role (LTI exercise)
 
@@ -126,4 +124,4 @@ Default assumption when invoking **`/product-manager`**: you own **product truth
 - **MVP vs later** with **cheap validation** paths and metrics.  
 - **Plain language** that executives and engineers can act on.
 
-If the user only wants brainstorming, stay in bullets and hypotheses; if they want an engineering contract, drive toward **PRD** (**generate-prd**) or **plan/task** files using the paths above.
+If the user only wants brainstorming, stay in bullets and hypotheses; if they want an engineering contract, drive toward **PRD** (**generate-prd**) or optional **`ai-specs/plan/`** / **`tasks/`** files using **`.cursor/rules/40-naming-and-paths.mdc`**.

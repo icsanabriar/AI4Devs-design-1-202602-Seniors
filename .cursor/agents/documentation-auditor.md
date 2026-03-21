@@ -60,7 +60,7 @@ Audit documentation for **completeness**, **clarity**, **internal and cross-file
 | Deliverable expectations | **`.cursor/rules/20-deliverable-markdown.mdc`**, **`.cursor/rules/50-diagram-standards.mdc`**, **`.cursor/rules/60-review-and-validation.mdc`** |
 | Paths and placeholders | **`.cursor/rules/40-naming-and-paths.mdc`** |
 | Prompt log rules | **`.cursor/rules/30-prompt-tracking.mdc`** |
-| PRD | **`ai-specs/prd/<NNN>-prd.md`** |
+| PRD | **`LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md`** (e.g. `LTI-ICS/001-prd.md`) |
 | Plans / tasks | **`ai-specs/plan/<NNN>-plan.md`**, **`ai-specs/tasks/<NNN>-task.md`** |
 | Consolidated course doc | **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`** (e.g. `LTI-ICS/LTI-ICS.md`) |
 | ADRs | **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`** |

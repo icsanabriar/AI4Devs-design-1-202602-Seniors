@@ -12,7 +12,7 @@ Prevent “looks complete” documentation that is **internally inconsistent**, 
 ## Scope
 
 - **Global:** any milestone where assistants declare design/docs **complete**, **ready for PR**, or **ready to submit**.
-- **Artifacts in scope:** `ai-specs/prd/<NNN>-prd.md`, `ai-specs/plan/<NNN>-plan.md`, `ai-specs/tasks/<NNN>-task.md`, **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**, **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`**, optional **`ai-specs/review/<NNN>-review.md`**.
+- **Artifacts in scope:** **`LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md`**, `ai-specs/plan/<NNN>-plan.md`, `ai-specs/tasks/<NNN>-task.md`, **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**, **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`**, optional **`ai-specs/review/<NNN>-review.md`**.
 
 ## Requirements — when validation MUST run
 
@@ -21,7 +21,7 @@ Prevent “looks complete” documentation that is **internally inconsistent**, 
 
 ## Requirements — what validation MUST check
 
-1. **Mandatory sections:** Deliverable MUST satisfy **`.cursor/rules/20-deliverable-markdown.mdc`**; PRD/plan/task files MUST satisfy their templates in **`.cursor/skills/`** when those artifacts exist.
+1. **Mandatory sections:** Deliverable MUST satisfy **`.cursor/rules/20-deliverable-markdown.mdc`**; PRD files MUST satisfy the **generate-prd** template in **`.cursor/skills/`** when a PRD artifact exists; **`ai-specs/plan/<NNN>-plan.md`** and **`ai-specs/tasks/<NNN>-task.md`** MUST comply with **`.cursor/rules/40-naming-and-paths.mdc`** and be **internally coherent** when those artifacts exist (no dedicated plan/task skill templates in this repo revision).
 2. **Internal consistency:** No conflicting MVP scope, duplicate **H1**, broken **FR-** / **ADR-** numbering without explanation.
 3. **Cross-artifact alignment:** Goals ↔ FRs ↔ metrics (PRD); FRs ↔ diagram entity names ↔ tasks; NFRs ↔ architecture and ADRs.
 4. **Path compliance:** All new artifacts MUST comply with **`.cursor/rules/40-naming-and-paths.mdc`**.

@@ -4,7 +4,7 @@ description: >-
   Software architecture skill: quality attributes, C4-aligned Mermaid, clean
   architecture framing, ADRs in the active contributor ARD.md (LTI-* folder).
   Use for system design and data modeling—not for replacing PRD intent
-  (generate-prd) or execution tasks (improve-story). Pair with validate-artifacts
+  (generate-prd) or owning execution task specs in ai-specs/tasks. Pair with validate-artifacts
   for coherence.
 ---
 
@@ -23,14 +23,14 @@ Turn **stated requirements and constraints** into **coherent technical structure
 ## When Not to Use
 
 - **Replacing** product strategy, MVP prioritization, or **problem framing** without PRD/**`ReadMe.md`**/user alignment → product owner / **generate-prd**.
-- **Phased delivery planning** as the only artifact → **plan-story**.
-- **Single story** acceptance specs → **improve-story**.
+- **Phased delivery planning** as the only artifact → **`ai-specs/plan/<NNN>-plan.md`** per **`.cursor/rules/40-naming-and-paths.mdc`** (no dedicated skill in this repo revision).
+- **Single story** acceptance specs as the only artifact → **`ai-specs/tasks/<NNN>-task.md`** per **`.cursor/rules/40-naming-and-paths.mdc`** (no dedicated skill in this repo revision).
 - **Git commits** only → **commit**.
 - **Read-only audit** of multiple docs → **validate-artifacts** (may consume outputs of this skill).
 
 ## Inputs
 
-- **Requirements source:** **`ReadMe.md`**, **`ai-specs/prd/<NNN>-prd.md`**, **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**, or user-provided constraints.
+- **Requirements source:** **`ReadMe.md`**, **`LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md`**, **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**, or user-provided constraints.
 - **Contributor slug** for ADR + deliverable paths: e.g. **`LTI-ICS`** (folder name = basename of main `.md`).
 - Optional: existing **ADR** file **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`**.
 
