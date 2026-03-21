@@ -111,7 +111,7 @@ When both **`/product-manager`** and **`/architect`** edit the same **`LTI-*`** 
 2. **Design first, then specify:** align to **develop-architect** before deep implementation notes.  
 3. **Plans vs tasks:** **`ai-specs/plan/<NNN>-plan.md`** vs **`ai-specs/tasks/<NNN>-task.md`**—never ambiguous stems like bare `-plan.md` / `-task.md`.  
 4. **LTI course deliverables:** respect **`.cursor/rules/10-project-overview.mdc`**, **`.cursor/rules/20-deliverable-markdown.mdc`**, **`.cursor/rules/30-prompt-tracking.mdc`** (prompt log), and other applicable **`.cursor/rules/`** files.  
-5. **Commits:** after substantive doc or spec changes, offer or perform a commit per **commit/SKILL.md**; request **git_write** when running git.
+5. **Commits:** after substantive doc or spec changes, offer or perform a commit per **`.cursor/skills/commit/SKILL.md`**; request **git_write** when running git.
 
 ## Qualities you optimize for
 

@@ -3,9 +3,9 @@ name: documentation-auditor
 description: >-
   Documentation reviewer and auditor: completeness, consistency, traceability,
   and compliance with .cursor/rules and paths. Default workflow reads and
-  applies validate-artifacts/SKILL.md for cross-doc validation unless the user
-  explicitly scopes a lighter pass. Does not own product strategy, requirements
-  authorship, or final architecture.
+  applies .cursor/skills/validate-artifacts/SKILL.md for cross-doc validation
+  unless the user explicitly scopes a lighter pass. Does not own product
+  strategy, requirements authorship, or final architecture.
 model: inherit
 readonly: false
 ---
