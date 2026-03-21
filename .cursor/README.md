@@ -4,6 +4,16 @@ This folder configures **Cursor** for the LTI / AI4Devs design exercise: **agent
 
 **Independence from root docs:** Repository-root **`ReadMe.md`** (course brief) is **not** part of `.cursor/` and **must not** be required to link here. Governance for assistants using this setup is defined under **`.cursor/rules/`** and this file.
 
+### Path patterns: what is real vs example
+
+| Kind | Meaning for a new contributor |
+|------|------------------------------|
+| **Real paths under `.cursor/`** | Files and folders **committed in this repo**—listed in [Files on disk](#files-on-disk-authoritative-active-layout) below. These exist after clone (for this branch). |
+| **Repository root** | **`ReadMe.md`** is the **course brief** (real file name, capital **M**). It is **not** inside `.cursor/`. |
+| **Contributor tree (pattern)** | **`LTI-<CONTRIBUTOR-SLUG>/`** is a **folder you create** (example: **`LTI-ICS/`** when `<CONTRIBUTOR-SLUG>` is `ICS`). Required course files inside it are defined in **`.cursor/rules/10-project-overview.mdc`** and **`40-naming-and-paths.mdc`**. |
+| **`ai-specs/` (pattern)** | **`ai-specs/plan/`**, **`ai-specs/tasks/`**, **`ai-specs/review/`** are **conventions for optional generated artifacts**. The **`ai-specs/`** directory may **not exist** until someone creates the first file—treat paths as **templates**, not as proof the folder is already on disk. |
+| **Angle-bracket tokens** | **`<CONTRIBUTOR-SLUG>`**, **`<NNN>`**, etc. are **placeholders**—replace them; do not create filenames that still contain `<` or `>`. Full definitions: [Placeholder lexicon](#placeholder-lexicon-paths-in-docs). |
+
 ## Repository map
 
 | Path | Contents |
@@ -12,9 +22,11 @@ This folder configures **Cursor** for the LTI / AI4Devs design exercise: **agent
 | [`.cursor/skills/`](skills/) | One `SKILL.md` per skill (subfolders: `develop-architect`, `generate-prd`, `validate-artifacts`, `commit`) plus [`commit/examples.md`](skills/commit/examples.md) |
 | [`.cursor/rules/`](rules/) | Numbered `.mdc` rules (`10-` … `60-`), some `alwaysApply`, some scoped by glob |
 
-### Files on disk (authoritative inventory)
+### Files on disk: authoritative active layout
 
-Paths below are relative to **`.cursor/`** (this tree as of maintenance; extend when adding agents/skills/rules):
+Paths below are **real `.cursor/` paths** in this repository (relative to **`.cursor/`**). They are the **intended active** agents, rules, and skills.
+
+**Legacy / non-default:** If **`skills/plan-story/`** or **`skills/improve-story/`** appear in a clone, they are **not** part of the default operating model—omit them from this table and from workflow expectations unless your team explicitly re-enables them.
 
 | Path |
 |------|
@@ -34,14 +46,14 @@ Paths below are relative to **`.cursor/`** (this tree as of maintenance; extend 
 | `skills/generate-prd/SKILL.md` |
 | `skills/validate-artifacts/SKILL.md` |
 
-**Active skills (default workflow):** **`develop-architect`**, **`generate-prd`**, **`validate-artifacts`**, **`commit`** only—see [Skills inventory](#skills-inventory).
+**Active skills (default workflow):** **`develop-architect`**, **`generate-prd`**, **`validate-artifacts`**, **`commit`** only—see [Skills inventory](#skills-inventory). **Verify** with [Setup health check](#setup-health-check-cursor-tooling).
 
 ### Placeholder lexicon (paths in docs)
 
 | Token | Meaning |
 |-------|---------|
 | **`<CONTRIBUTOR-SLUG>`** | Contributor folder suffix: root is **`LTI-<CONTRIBUTOR-SLUG>/`** (example: `ICS` → `LTI-ICS/`). |
-| **`<NNN>`** | Three-digit zero-padded index **`001`–`999`**: PRDs under **`LTI-<CONTRIBUTOR-SLUG>/`**; **`ai-specs/plan/`**, **`tasks/`**, **`review/`** per **`.cursor/rules/40-naming-and-paths.mdc`**. |
+| **`<NNN>`** | Three-digit zero-padded index **`001`–`999`** for one numbered series **per target directory** (e.g. PRDs in **`LTI-<CONTRIBUTOR-SLUG>/`**; optional plans in **`ai-specs/plan/`**, tasks in **`ai-specs/tasks/`**, reviews in **`ai-specs/review/`**) per **`.cursor/rules/40-naming-and-paths.mdc`**. |
 | **`LTI-ICS`** (in examples) | Concrete example slug only—not a second placeholder pattern. |
 
 Do **not** use malformed stems such as bare **`-prd.md`** or **`LTI-/LTI-.md`**; always show **`LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md`** or **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**.
@@ -70,7 +82,8 @@ Agents            →  Role boundaries, handoffs, which skills to read first
        ↓
 Skills            →  Concrete paths, templates, create/update vs validate
        ↓
-Artifacts         →  LTI-* deliverables, ai-specs/*, prompts.md, ARD.md
+Artifacts         →  Required: LTI-<CONTRIBUTOR-SLUG>/*.md (deliverable, prompts, ARD, optional PRD)
+                    Optional: ai-specs/plan|tasks|review/<NNN>-*.md when created
 ```
 
 - **Rules** apply to any assistant turn when in scope (`alwaysApply` or matching glob). They define course layout, prompt logging, paths, diagrams, validation expectations.
@@ -80,7 +93,7 @@ Artifacts         →  LTI-* deliverables, ai-specs/*, prompts.md, ARD.md
 ## Collaboration model
 
 - **Humans** own the contributor folder (e.g. `LTI-ICS/`) and PRs.
-- **Product-oriented** edits → **`/product-manager`** (or its skill: `generate-prd`; optional `ai-specs/plan/` / `tasks/` files follow **`.cursor/rules/40-naming-and-paths.mdc`**).
+- **Product-oriented** edits → **`/product-manager`** (skill: **`generate-prd`**). Optional artifacts **`ai-specs/plan/<NNN>-plan.md`** and **`ai-specs/tasks/<NNN>-task.md`** (create when needed; naming per **`.cursor/rules/40-naming-and-paths.mdc`**).
 - **Technical design** → **`/architect`** + **`develop-architect`** (diagrams, typed ERD, ADRs).
 - **Review before submit** → **`/documentation-auditor`** + **`validate-artifacts`** skill (structured report).
 - **Never** use an agent to silently override another role’s ownership—use **handoffs** (see agent files).
@@ -147,7 +160,24 @@ Invoke via Cursor’s agent picker (e.g. **`/architect`**, **`/product-manager`*
 
 **When not to use:** Each skill’s `SKILL.md` has **When Not to Use**—e.g. `validate-artifacts` is not legal/compliance review; `commit` is not for fixing content without user intent.
 
-**Optional `ai-specs` plans and tasks:** Paths **`ai-specs/plan/<NNN>-plan.md`** and **`ai-specs/tasks/<NNN>-task.md`** remain valid per **`.cursor/rules/40-naming-and-paths.mdc`** (next `<NNN>` on create; **update in place** when editing the same logical artifact). This workspace does **not** ship separate skills for those templates in the current course run.
+**Optional `ai-specs` plans and tasks:** When you create them, use **`ai-specs/plan/<NNN>-plan.md`** and **`ai-specs/tasks/<NNN>-task.md`** per **`.cursor/rules/40-naming-and-paths.mdc`** (next `<NNN>` on create; **update in place** when editing the same logical artifact). No separate **plan** / **task** skills in the default workflow—follow the rule and agent ownership.
+
+---
+
+## Setup health check (Cursor tooling)
+
+Run this when touching **`.cursor/`**, before merge, or during periodic audits. Goal: confirm **internal references and layout** still match this guide—not to validate student **`LTI-*`** content (use **`validate-artifacts`** / **`/documentation-auditor`** for that).
+
+| # | Check | How to verify (examples) | Pass if |
+|---|--------|---------------------------|---------|
+| 1 | **Rules stack** | List **`.cursor/rules/`** | Exactly **six** files: **`10-` … `60-`**.mdc`; filenames match **`.cursor/rules/10-project-overview.mdc`** stack table. |
+| 2 | **Agents** | List **`.cursor/agents/`** | **`architect.md`**, **`product-manager.md`**, **`documentation-auditor.md`** present; each references **`.cursor/rules/NN-*.mdc`** and **`.cursor/skills/.../SKILL.md`** paths that exist. |
+| 3 | **Active skills** | List **`.cursor/skills/`** | Folders **`commit`**, **`develop-architect`**, **`generate-prd`**, **`validate-artifacts`** each contain **`SKILL.md`**; **`commit/examples.md`** exists. |
+| 4 | **README vs tree** | Open [Files on disk](#files-on-disk-authoritative-active-layout) | Every **non-legacy** path in the table exists on disk; no orphaned active skill folder missing from the table. |
+| 5 | **Placeholder discipline** | Spot-check **`.cursor/rules/40-naming-and-paths.mdc`** and this README | **`<CONTRIBUTOR-SLUG>`** / **`<NNN>`** used consistently; no bare **`-prd.md`** / **`-plan.md`** stems without **`<NNN>-`**. |
+| 6 | **Deliverable validation** | Course submission readiness | Still governed by **`.cursor/rules/60-review-and-validation.mdc`** + **`.cursor/skills/validate-artifacts/SKILL.md`**—unchanged; this table does **not** replace that. |
+
+**Quick command hints (repo root):** `ls .cursor/rules`, `ls .cursor/agents`, `ls .cursor/skills` — compare to this document.
 
 ---
 
@@ -158,7 +188,7 @@ Invoke via Cursor’s agent picker (e.g. **`/architect`**, **`/product-manager`*
 | **`.cursor/rules/10-project-overview.mdc`** | Repo purpose, LTI context, `LTI-*` layout, collaboration | Global + course layout; foundation |
 | **`.cursor/rules/20-deliverable-markdown.mdc`** | Required sections in main deliverable + `prompts.md` quality | Glob: `**/LTI-*/*.md` |
 | **`.cursor/rules/30-prompt-tracking.mdc`** | Mandatory append-only `prompts.md` log, format, failure behavior | Typically always-on; path per contributor slug |
-| **`.cursor/rules/40-naming-and-paths.mdc`** | `ai-specs/.../<NNN>-*.md`, **`LTI-<CONTRIBUTOR-SLUG>/`** basename match, forbid bare `-prd.md` stems | Global naming |
+| **`.cursor/rules/40-naming-and-paths.mdc`** | **`ai-specs/plan|tasks|review/<NNN>-*.md`**, **`LTI-<CONTRIBUTOR-SLUG>/`** files, basename match, forbid bare `-prd.md` stems | Global naming |
 | **`.cursor/rules/50-diagram-standards.mdc`** | Mermaid + C4 semantic/visual consistency, grounding in requirements | `LTI-*` + `ai-specs` markdown with diagrams |
 | **`.cursor/rules/60-review-and-validation.mdc`** | Validation before “complete”; alignment across artifacts | Governance to run validation passes |
 
@@ -211,7 +241,7 @@ Use when reviewing a PR or periodically auditing the repo tooling.
 - [ ] Each **agent** points to **real** skill paths under **`.cursor/skills/`**.
 - [ ] **Path conventions** in rules, skills, and docs agree (`<NNN>` three-digit, `LTI-<CONTRIBUTOR-SLUG>/`).
 - [ ] **`documentation-auditor`** still defaults to **`validate-artifacts`** for full audits (see agent file).
-- [ ] **`.cursor/README.md`** “Files on disk” table matches the repository (including **`skills/commit/examples.md`**).
+- [ ] **`.cursor/README.md`** [Files on disk](#files-on-disk-authoritative-active-layout) matches the **intended active** tree (including **`skills/commit/examples.md`**); run [Setup health check](#setup-health-check-cursor-tooling) on `.cursor/` PRs.
 - [ ] After adding a rule: assign a **new number** in sequence, update this README’s rules table and **`.cursor/rules/10-project-overview.mdc`** stack if needed.
 - [ ] After adding an agent: document it here under [Agents](#agents).
 
@@ -239,7 +269,7 @@ Use when reviewing a PR or periodically auditing the repo tooling.
 2. **Skills** for repeatable **file/process** patterns (templates, numbering, validation steps).
 3. **Agents** for **role boundaries** and handoffs—keep them thin; link to skills and numbered rules.
 4. Update **this README** and **`.cursor/rules/10-project-overview.mdc`** when the stack changes.
-5. Run the [Operability checklist](#operability--maintenance-checklist) after changes.
+5. Run the [Operability checklist](#operability--maintenance-checklist) and [Setup health check](#setup-health-check-cursor-tooling) after changes.
 
 ---
 

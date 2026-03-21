@@ -2,7 +2,7 @@
 name: develop-architect
 description: >-
   Software architecture skill: quality attributes, C4-aligned Mermaid, clean
-  architecture framing, ADRs in the active contributor ARD.md (LTI-* folder).
+  architecture framing, ADRs in the active contributor ARD log (see rule 40 path pattern).
   Use for system design and data modeling—not for replacing PRD intent
   (generate-prd) or owning execution task specs in ai-specs/tasks. Pair with validate-artifacts
   for coherence.

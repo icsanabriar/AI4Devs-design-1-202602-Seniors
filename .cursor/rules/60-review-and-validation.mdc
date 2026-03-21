@@ -47,6 +47,10 @@ Prevent “looks complete” documentation that is **internally inconsistent**, 
 - [ ] Contradictions listed, not hidden.
 - [ ] Path and diagram rules (**`.cursor/rules/40-naming-and-paths.mdc`**, **`.cursor/rules/50-diagram-standards.mdc`**) cited when violations are found.
 
+## Cursor tooling health (maintainer audits)
+
+When a change **targets `.cursor/`** (rules, agents, skills, or **`.cursor/README.md`**), maintainers SHOULD run the **Setup health check** in **`.cursor/README.md`** (section **“Setup health check (Cursor tooling)”**) so agent→rule→skill links and the documented file tree stay aligned. That check is **about repository tooling**, not about validating a student’s **`LTI-*`** deliverable (use **`validate-artifacts`** / **`.cursor/skills/validate-artifacts/SKILL.md`** for deliverables).
+
 ## Reference
 
 Operational steps and optional persisted report path **`ai-specs/review/<NNN>-review.md`** are defined in **`.cursor/skills/validate-artifacts/SKILL.md`**. This rule sets **governance**; that skill sets **procedure**.

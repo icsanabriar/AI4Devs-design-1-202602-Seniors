@@ -24,6 +24,11 @@ Remove ambiguous artifact paths (e.g. bare `-prd.md`) so assistants produce **pr
 
 **Forbidden:** ambiguous stems such as **`-prd.md`**, **`-plan.md`**, **`-task.md`**, **`-review.md`** without the **`<NNN>-`** prefix where this rule assigns one.
 
+## How to read path examples in this rule
+
+- **`ai-specs/...` paths** name **where files must live if you create them**; they are **not** a claim that `ai-specs/` already exists in every clone.
+- **`LTI-<CONTRIBUTOR-SLUG>/`** is a **pattern**: substitute your slug (e.g. **`ICS`** → folder **`LTI-ICS/`**). The shorthand **`LTI-*`** in other docs means “any contributor folder matching **`LTI-<CONTRIBUTOR-SLUG>/`**.”
+
 ## Requirements — `ai-specs/` (global)
 
 1. Plan files MUST match: **`ai-specs/plan/<NNN>-plan.md`** where filenames match `^\d{3}-plan\.md$`.

@@ -16,7 +16,7 @@ Provide a **repeatable** validation pass over design-repo artifacts so teams cat
 ## When to Use
 
 - Before treating a milestone as “done” (course submit, design review, handoff).
-- After **merging** content from PRD → `LTI-*` deliverable, or after parallel agent edits.
+- After **merging** content from PRD into the consolidated deliverable **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**, or after parallel agent edits.
 - When the user suspects **two documents disagree** (e.g. FR vs diagram vs ADR).
 - After applying **generate-prd** or **develop-architect** to verify outputs meet this repo’s conventions.
 
@@ -40,7 +40,7 @@ Collect what the user points at (paths relative to repo root). Typical sets:
 | Prompt log (structure / append-only) | `LTI-<CONTRIBUTOR-SLUG>/prompts.md` — per **`.cursor/rules/30-prompt-tracking.mdc`** when assessing course submission hygiene |
 | Optional persisted review | Output path below |
 
-**Minimum:** at least **one** substantive artifact, or explicit permission to scan `ai-specs/**` and `LTI-*/`.
+**Minimum:** at least **one** substantive artifact, or explicit permission to scan under **`ai-specs/`** (all subfolders) and under every **`LTI-*/`** contributor folder at repository root.
 
 ## Outputs
 

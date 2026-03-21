@@ -49,7 +49,7 @@ LTI-ICS/<NNN>-prd.md
 
 1. Parse the description; **one** clarifying question only if **blocking**; otherwise use **Open questions** in the PRD.
 2. Resolve **create vs update** target path (below).
-3. Fill **PRD template**; add **Lean Canvas**, **Use cases** (three), and course-oriented sections when supporting **`ReadMe.md`** / `LTI-*` work.
+3. Fill **PRD template**; add **Lean Canvas**, **Use cases** (three), and course-oriented sections when supporting repository-root **`ReadMe.md`** and the active **`LTI-<CONTRIBUTOR-SLUG>/`** deliverable tree.
 4. Reply with **exact path** and a **one-paragraph** scope summary.
 
 ## PRD template (required sections)
