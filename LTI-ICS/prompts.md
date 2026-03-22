@@ -2,17 +2,9 @@
 
 # Prompt - 2026-03-22T00:00:37Z
 ## Agent: Composer
-The main components or stages of an Applicant Tracking System (ATS) are:
+Frame the PRD around the seven ATS lifecycle stages (see `reference-ats-lifecycle-stages.md` in this folder for the numbered list).
 
-1. Job creation: Create the job openings or positions to be filled.
-2. Job posting: Publish job openings on job boards, company websites, social media, and other channels.
-3. Application intake: Receive and collect candidate applications.
-4. Application review: Screen and evaluate resumes or candidate profiles.
-5. Online assessments: Conduct technical, psychometric, or knowledge-based tests.
-6. Interview scheduling: Coordinate interview dates and times with candidates.
-7. Hiring selected candidates: Choose the best candidates and complete the hiring process.
-
-Based on the previous context,  @.cursor/agents/product-manager.md @.cursor/skills/generate-prd/SKILL.md
+Based on the previous context, @.cursor/agents/product-manager.md @.cursor/skills/generate-prd/SKILL.md
 
 ---
 # Prompt - 2026-03-22T00:04:13Z
@@ -59,5 +51,179 @@ Based on the @LTI-ICS/001-prd.md @LTI-ICS/ARD.md and @LTI-ICS/LTI-ICS.md @.curso
 
 ---
 # Prompt - 2026-03-22T00:24:15Z
+## Agent: Composer
+@.cursor/skills/commit/SKILL.md
+
+---
+# Prompt - 2026-03-22T02:04:18Z
+## Agent: Composer
+Verify each finding against the current code and only fix it if needed.
+
+In @.cursor/agents/documentation-auditor.md around lines 122 - 123, The current
+phrase "**Conflicting instructions** from user vs rules—state the conflict and
+**default to rules** unless user explicitly overrides for the session." weakens
+governance by permitting overrides; update the wording so it disallows bypassing
+always-apply constraints: replace that sentence with language that clarifies the
+agent must state the conflict and default to rules, allows the user only to
+narrow the scope of non-always-apply instructions, and explicitly prohibits any
+user override that would negate or bypass always-apply rules (reference the
+phrase "**Conflicting instructions**" and the "default to rules" logic to locate
+and update the sentence).
+
+---
+# Prompt - 2026-03-22T02:11:13Z
+## Agent: Composer
+Verify each finding against the current code and only fix it if needed.
+
+In @.cursor/README.md at line 7, The heading "Path patterns: what is real vs
+example" is using an H3 (###) directly after the H1, breaking the markdown
+hierarchy; change that heading to H2 (replace `### Path patterns: what is real
+vs example` with `## Path patterns: what is real vs example`) so the document
+follows proper heading levels and passes markdown linting.
+
+---
+# Prompt - 2026-03-22T02:16:38Z
+## Agent: Composer
+Verify each finding against the current code and only fix it if needed.
+
+In @.cursor/README.md around lines 173 - 191, The table rows in
+.cursor/README.md (the setup-check and Rules overview) are malformed because
+unescaped pipes and improperly closed code spans break Markdown rendering; fix
+by ensuring every filename and pattern (e.g.
+.cursor/rules/10-project-overview.mdc, .cursor/agents/architect.md,
+.cursor/skills/commit/SKILL.md, <CONTRIBUTOR-SLUG>, NNN, -prd.md) is either
+wrapped in a proper code span or has internal pipes escaped (use `\|`), and make
+sure backticks are balanced for cells like `.cursor/rules/10-` … `60-`.mdc` and
+the table header rows so each cell is valid Markdown and the columns align
+correctly.
+
+---
+# Prompt - 2026-03-22T02:17:32Z
+## Agent: Composer
+Verify each finding against the current code and only fix it if needed.
+
+In @.cursor/rules/20-deliverable-markdown.mdc around lines 3 - 30, The rule
+currently applies to any markdown under LTI-*/ which causes false failures for
+prompts.md, PRDs, ADRs; update the globs and rule scoping so the main-document
+requirements only run against the main deliverable filename (change "globs:
+\"**/LTI-*/*.md\"" to a more specific pattern such as "globs:
+\"**/LTI-*/LTI-*.md\"" or add an include for "LTI-<CONTRIBUTOR-SLUG>.md" and add
+a separate rule or exclude pattern for "prompts.md" (and other non-deliverable
+docs) so the section that mandates items 1–7 only validates files matching
+LTI-<CONTRIBUTOR-SLUG>.md; ensure prompts.md continues to be matched by its own
+rule (or excluded) to avoid the main-document checks running against it.
+
+---
+# Prompt - 2026-03-22T02:20:27Z
+## Agent: Composer
+Verify each finding against the current code and only fix it if needed.
+
+In @.cursor/rules/40-naming-and-paths.mdc at line 43, Line currently points ADR
+append-only rules at 50-diagram-standards.mdc which is about diagrams; update
+the cross-reference so the ADR append-only guidance points to the correct ADR
+lifecycle doc instead of 50-diagram-standards.mdc. Replace the reference in the
+sentence containing "LTI-<CONTRIBUTOR-SLUG>/ARD.md" so it cites the canonical
+ADR lifecycle file (the document that defines ADR append-only rules — e.g., the
+ADR lifecycle or architecture decision records guideline) and ensure the wording
+still enforces "append-only ADRs" for LTI-<CONTRIBUTOR-SLUG>/ARD.md.
+
+---
+# Prompt - 2026-03-22T02:22:09Z
+## Agent: Composer
+Verify each finding against the current code and only fix it if needed.
+
+In @.cursor/rules/60-review-and-validation.mdc around lines 24 - 31, Update the
+validation checklist in .cursor/rules/60-review-and-validation.mdc to explicitly
+enforce prompt-tracking compliance by adding a rule that, when a submission is
+in scope, verifies the existence and correct format of
+.cursor/rules/30-prompt-tracking.mdc artifacts and contributor prompt files
+(LTI-<CONTRIBUTOR-SLUG>/prompts.md); modify the checklist (e.g., add a new
+bullet after "Path compliance" or augment item 1) to require presence/format
+checks and fail the audit if the prompt-tracking file or properly named
+LTI-.../prompts.md is missing or malformed, and reference the exact filenames
+(.cursor/rules/30-prompt-tracking.mdc and LTI-<CONTRIBUTOR-SLUG>/prompts.md) so
+reviewers and automated validators can locate and validate them.
+
+---
+# Prompt - 2026-03-22T02:26:03Z
+## Agent: Composer
+Verify each finding against the current code and only fix it if needed.
+
+In @.cursor/skills/commit/SKILL.md around lines 49 - 60, The commit message
+template in the SKILL.md snippet is inconsistent: the template line "(<scope>):
+<Imperative description with lowercase after the colon>" conflicts with the
+example "feat(dn): Add new diagram for candidates component" and the note saying
+the first word after ':' must be capitalized. Pick one convention and make the
+text consistent: either change the template to require a capitalized first word
+(e.g., "(<scope>): <Imperative description with Capitalized first word>") or
+change the example and explanatory note to require lowercase; update the
+template line, the example string "feat(dn): Add new diagram for candidates
+component", and the descriptive bullet that mentions "first word after `:` is
+capitalized" so all three use the same rule.
+
+---
+# Prompt - 2026-03-22T02:27:46Z
+## Agent: Composer
+Verify each finding against the current code and only fix it if needed.
+
+In @.cursor/skills/generate-prd/SKILL.md around lines 55 - 103, The PRD template
+under "PRD template (required sections)" is missing the mandatory Lean Canvas
+and exactly three use-case entries (with diagrams) that are required elsewhere;
+update the template to include a "Lean Canvas" subsection and a "Use cases"
+subsection that explicitly requires exactly three primary use cases (each with a
+short description and a placeholder for an accompanying diagram), and clarify
+these as required for course-aligned PRDs so generated documents cannot pass
+validation without them.
+
+---
+# Prompt - 2026-03-22T02:29:14Z
+## Agent: Composer
+Verify each finding against the current code and only fix it if needed.
+
+In `@LTI-ICS/001-prd.md` around lines 124 - 145, Add a new NFR section for
+candidate PII privacy lifecycle to cover retention and deletion: create explicit
+requirements (e.g., NFR-008) that specify retention windows for applicant data,
+automated and manual deletion/erasure flows, handling of consent withdrawal,
+data minimization, export/portability, and secure purge procedures, and link
+these to existing controls (reference NFR-001 RBAC and NFR-002 audit trails) so
+that deletion actions are auditable and retention rules are enforced by the
+system.
+
+---
+# Prompt - 2026-03-22T02:31:28Z
+## Agent: Composer
+Verify each finding against the current code and only fix it if needed.
+
+In `@LTI-ICS/001-prd.md` around lines 289 - 299, Update the conceptual model to
+consistently reflect tenant scoping by marking tenant-owned entities as
+organization-scoped and adding organization_id where missing: add
+organization_id (or indicate "belongs to Organization") to JobRequisition,
+JobPosting, Application, Interview, Feedback, and AuditEvent in the
+table/diagram (also verify Candidate if it can be organization-scoped in your
+domain), and ensure AutomationRule and User remain explicitly scoped; keep the
+naming consistent with the stated organization_id strategy so all tenant-owned
+records are clearly tied to Organization.
+
+---
+# Prompt - 2026-03-22T02:32:20Z
+## Agent: Composer
+Verify each finding against the current code and only fix it if needed.
+
+In `@LTI-ICS/prompts.md` around lines 5 - 15, The prompt file contains
+assistant-like generated answer text in the block starting with "The main
+components or stages of an Applicant Tracking System (ATS) are:" (lines 5–14);
+remove that assistant-style content so the prompt log contains only the original
+user prompt text, and if you need to preserve the ATS list for context move it
+into a separate assistant/response artifact rather than the prompt body. Ensure
+the block is replaced with a clean user-only prompt placeholder or instruction,
+and verify no other generated-answer phrasing remains in the prompt content.
+
+---
+# Prompt - 2026-03-22T02:44:41Z
+## Agent: Composer
+@.cursor/agents/documentation-auditor.md @.cursor/skills/validate-artifacts/SKILL.md
+
+---
+# Prompt - 2026-03-22T02:47:52Z
 ## Agent: Composer
 @.cursor/skills/commit/SKILL.md

@@ -1,6 +1,6 @@
 # LTI ATS — System design (ICS)
 
-This document is the **consolidated design** for contributor folder **LTI-ICS**. **Product intent** is defined in **[001-prd.md](./001-prd.md)** (v0.2). **Architecture decisions** are logged in **[ARD.md](./ARD.md)**.
+This document is the **consolidated design** for contributor folder **LTI-ICS**. **Product intent** is defined in **[001-prd.md](./001-prd.md)** (version in that file’s **Document control**). **Architecture decisions** are logged in **[ARD.md](./ARD.md)**.
 
 ## Brief description, added value, and competitive advantages
 
