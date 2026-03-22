@@ -61,20 +61,20 @@ Extra moving part for local dev; need lifecycle rules (retention, deletion on er
 
 ## ADR-004 — Near-real-time collaboration via WebSocket + Redis pub/sub
 
-**Status:** Proposed  
+**Status:** Accepted  
 **Date:** 2026-03-22  
 **Context:**  
 FR-024 requires real-time or near-real-time updates for comments and stage changes without full page refresh.
 
 **Decision:**  
-Use **WebSocket** connections terminated at the API tier (or a thin realtime gateway colocated in the same deployable for MVP), with **Redis pub/sub** (or streams) fan-out across API instances. Fall back to **polling** for clients that cannot maintain a socket.
+Use **WebSocket** connections terminated at the API tier (or a thin realtime gateway colocated in the same deployable for MVP), with **Redis pub/sub** (or streams) fan-out across API instances. Fall back to **polling** for clients that cannot maintain a socket. The **LTI-ICS** deliverable adopts this pattern in prose and diagrams—**UC-2** (collaboration events over **Redis** to **WebSocket** clients), **High-level system design** (**Redis** for collaboration pub/sub), and the API container view (**Collaboration** → **Redis**).
 
 **Options considered:**  
 - **SSE only** — simpler one-way push; weaker bi-directional typing indicators. **Possible alternative** if ops prefers HTTP-only.  
 - **Managed realtime PaaS** — faster integration; ongoing cost and data residency questions. **Open** for later.
 
 **Consequences:**  
-Horizontal scaling of API nodes requires shared pub/sub; must authenticate socket sessions with same **Policy & RBAC** as HTTP.
+Horizontal scaling of API nodes requires shared pub/sub; must authenticate socket sessions with same **Policy & RBAC** as HTTP. **WebSocket termination + Redis fan-out** is the documented baseline for FR-023/FR-024 in **LTI-ICS**; changing transport (e.g. SSE-only) requires superseding this ADR and revising the same narrative and diagrams.
 
 ---
 
