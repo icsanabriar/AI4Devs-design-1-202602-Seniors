@@ -279,3 +279,39 @@ to keep context.
 # Prompt - 2026-03-22T03:03:15Z
 ## Agent: Composer
 @Commit all
+
+---
+# Prompt - 2026-03-22T03:09:38Z
+## Agent: Composer
+Verify each finding against the current code and only fix it if needed.
+
+In @.cursor/skills/commit/SKILL.md around lines 49 - 60, The commit message
+template in the SKILL.md snippet is inconsistent: the template line "(<scope>):
+<Imperative description with lowercase after the colon>" conflicts with the
+example "feat(dn): Add new diagram for candidates component" and the note saying
+the first word after ':' must be capitalized. Pick one convention and make the
+text consistent: either change the template to require a capitalized first word
+(e.g., "(<scope>): <Imperative description with Capitalized first word>") or
+change the example and explanatory note to require lowercase; update the
+template line, the example string "feat(dn): Add new diagram for candidates
+component", and the descriptive bullet that mentions "first word after `:` is
+capitalized" so all three use the same rule.
+
+---
+# Prompt - 2026-03-22T03:10:44Z
+## Agent: Composer
+Verify each finding against the current code and only fix it if needed.
+
+In @.cursor/agents/documentation-auditor.md around lines 43 - 44, The
+documentation-auditor spec uses two different verdict vocabularies; standardize
+them to a single set (preferably the one defined for validate-artifacts).
+Replace the later occurrences that read "Not ready / Ready with findings /
+Blocked" with "Pass / Pass with findings / Blocked" so the validate-artifacts
+procedure, verdicts, and any references to ai-specs/review/<NNN>-review.md all
+use the same vocabulary (search for "validate-artifacts" and the alternate
+wording to locate the mismatches and update them).
+
+---
+# Prompt - 2026-03-22T03:11:49Z
+## Agent: Composer
+@.cursor/skills/commit/SKILL.md all
