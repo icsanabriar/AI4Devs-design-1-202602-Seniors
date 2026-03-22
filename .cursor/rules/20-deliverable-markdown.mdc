@@ -8,12 +8,12 @@ alwaysApply: false
 
 ## Purpose
 
-Make the **graded consolidated design document** (**`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**) complete, renderable, and auditable against the course checklist. **`prompts.md`** in the same folder is governed by **`.cursor/rules/30-prompt-tracking.mdc`** (logging and deliverable quality)—this rule MUST NOT be treated as applying to **`prompts.md`**, PRDs, **`ARD.md`**, or other **`LTI-*`** Markdown.
+Make the **graded consolidated design document** (**`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**) complete, renderable, and auditable against the course checklist. **`prompts.md`** in the same folder is governed by **`.cursor/rules/30-prompt-tracking.mdc`** (logging and deliverable quality)—this rule MUST NOT be treated as applying to **`prompts.md`**, PRDs, **`ADR.md`**, or other **`LTI-*`** Markdown.
 
 ## Scope
 
 - **Glob attachment:** files matching **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`** only (same pattern as **`**/LTI-*/LTI-*.md`**; basename aligns with folder per **`.cursor/rules/40-naming-and-paths.mdc`**).
-- **Out of scope for this rule:** **`prompts.md`**, **`LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md`**, **`ARD.md`**, and any other Markdown under **`LTI-*`** (those files use other rules or templates).
+- **Out of scope for this rule:** **`prompts.md`**, **`LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md`**, **`ADR.md`**, and any other Markdown under **`LTI-*`** (those files use other rules or templates).
 
 ## Requirements — main design document
 

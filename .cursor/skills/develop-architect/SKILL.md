@@ -2,7 +2,7 @@
 name: develop-architect
 description: >-
   Software architecture skill: quality attributes, C4-aligned Mermaid, clean
-  architecture framing, ADRs in the active contributor ARD log (see rule 40 path pattern).
+  architecture framing, ADRs in the active contributor ADR log (see rule 40 path pattern).
   Use for system design and data modeling—not for replacing PRD intent
   (generate-prd) or owning execution task specs in ai-specs/tasks. Pair with validate-artifacts
   for coherence.
@@ -32,7 +32,7 @@ Turn **stated requirements and constraints** into **coherent technical structure
 
 - **Requirements source:** repository-root **`ReadMe.md`** (course brief; not **`README.md`** or **`.cursor/README.md`**), **`LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md`**, **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**, or user-provided constraints.
 - **Contributor slug** for ADR + deliverable paths: e.g. **`LTI-ICS`** (folder name = basename of main `.md`).
-- Optional: existing **ADR** file **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`**.
+- Optional: existing **ADR** file **`LTI-<CONTRIBUTOR-SLUG>/ADR.md`**.
 
 ## Outputs
 
@@ -40,10 +40,10 @@ Turn **stated requirements and constraints** into **coherent technical structure
 - **ADR log** at:
 
 ```text
-LTI-<CONTRIBUTOR-SLUG>/ARD.md
+LTI-<CONTRIBUTOR-SLUG>/ADR.md
 ```
 
-Example: slug **`LTI-ICS`** → **`LTI-ICS/ARD.md`** (repository root–relative).
+Example: slug **`LTI-ICS`** → **`LTI-ICS/ADR.md`** (repository root–relative).
 
 - **Diagram types:** `flowchart` / `sequenceDiagram` / `erDiagram` per rules below.
 
@@ -110,9 +110,9 @@ flowchart LR
 
 For costly or contested choices: **Context**, **Decision**, **Options** (with pros/cons), **Consequences**. Mark superseded decisions instead of silent deletes.
 
-### ADR log — `LTI-<CONTRIBUTOR-SLUG>/ARD.md` (required when decisions are recorded)
+### ADR log — `LTI-<CONTRIBUTOR-SLUG>/ADR.md` (required when decisions are recorded)
 
-When this skill shapes the reply, **update** **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`** in the **same turn** if the reply records **any** of:
+When this skill shapes the reply, **update** **`LTI-<CONTRIBUTOR-SLUG>/ADR.md`** in the **same turn** if the reply records **any** of:
 
 - A **committed** architectural decision.  
 - A **rejected** option worth preserving.  
@@ -122,7 +122,7 @@ If the turn is **purely exploratory** (no decision, rejection, or supersession),
 
 **File setup**
 
-- Path: **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`** (example: **`LTI-ICS/ARD.md`**).  
+- Path: **`LTI-<CONTRIBUTOR-SLUG>/ADR.md`** (example: **`LTI-ICS/ADR.md`**).  
 - Create folder and file if missing. New file starter:
 
 ```markdown
@@ -182,7 +182,7 @@ When producing **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**, this skil
 | NFRs → structure | Top quality attributes reflected in diagrams/decomposition |
 | Diagrams | Mermaid fences valid; names consistent across context/container/component |
 | Trust & PII | Sensitive flows called out; boundaries plausible |
-| ADRs | **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`** updated when decisions/rejections/supersessions occurred this turn |
+| ADRs | **`LTI-<CONTRIBUTOR-SLUG>/ADR.md`** updated when decisions/rejections/supersessions occurred this turn |
 | Honesty | Open risks and unknowns visible; no fake precision on compliance |
 
 **Bad output:** Technology laundry list with no requirement mapping; “scalable/secure” without criteria; duplicate C4 levels with no added detail.
@@ -193,7 +193,7 @@ When producing **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**, this skil
 
 | Artifact | Create | Update |
 |----------|--------|--------|
-| **ADR log** | Create **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`** with header if missing | **Append** ADRs only; use **supersede** pattern—no silent deletion of history |
+| **ADR log** | Create **`LTI-<CONTRIBUTOR-SLUG>/ADR.md`** with header if missing | **Append** ADRs only; use **supersede** pattern—no silent deletion of history |
 | **Deliverable `.md`** | Add new sections/diagrams where missing | **Read** existing file; **merge** diagrams and prose; avoid duplicate **H1**; align box names with glossary |
 | **Mermaid** | New blocks where needed | **Edit** existing blocks in place when refining; note major semantic change in prose or ADR |
 
@@ -201,7 +201,7 @@ When producing **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**, this skil
 
 ## Common Mistakes to Avoid
 
-- Logging ADRs to a **hard-coded** folder that does not match the student’s **`LTI-*`** slug—always use **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`** for the active contributor.
+- Logging ADRs to a **hard-coded** folder that does not match the student’s **`LTI-*`** slug—always use **`LTI-<CONTRIBUTOR-SLUG>/ADR.md`** for the active contributor.
 - **Technology-first** stacks with no mapped requirements.
 - **Identical** diagram at every C4 level without added detail.
 - **Silent** product scope expansion in architecture not traceable to PRD/**`ReadMe.md`**.
@@ -215,7 +215,7 @@ Before treating design work as “done” for a milestone:
 - [ ] Context + container views exist (or justified absence) as Mermaid blocks.  
 - [ ] Critical flows (e.g. PII, hiring pipeline) have narrative and/or sequence.  
 - [ ] Major decisions or rejections are recorded with alternatives.  
-- [ ] **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`** updated when this skill led to new or superseded ADRs.  
+- [ ] **`LTI-<CONTRIBUTOR-SLUG>/ADR.md`** updated when this skill led to new or superseded ADRs.  
 - [ ] Clean-architecture fit visible where applicable: core vs adapters, DIP, test boundaries.  
 - [ ] Open risks and unknowns visible.
 

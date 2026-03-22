@@ -72,7 +72,7 @@ This rule applies to **any Markdown artifact** under the globs above that contai
 
 ### Architecture Decision Records (when structure changes)
 
-1. When a diagram **commits** to structural choices that constitute decisions, updates MUST follow **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`** rules in **`.cursor/rules/`** and **develop-architect** skill (append-only, no empty stubs).
+1. When a diagram **commits** to structural choices that constitute decisions, updates MUST follow **`LTI-<CONTRIBUTOR-SLUG>/ADR.md`** rules in **`.cursor/rules/`** and **develop-architect** skill (append-only, no empty stubs).
 2. ADRs MUST NOT introduce **new product scope** without traceability to requirements or labeled assumption.
 
 ## Prohibited Behavior

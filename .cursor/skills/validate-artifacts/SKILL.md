@@ -35,7 +35,7 @@ Collect what the user points at (paths relative to repo root). Typical sets:
 | PRD | `LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md` |
 | Plan | `ai-specs/plan/<NNN>-plan.md` |
 | Task | `ai-specs/tasks/<NNN>-task.md` |
-| ADR log | `LTI-<CONTRIBUTOR-SLUG>/ARD.md` |
+| ADR log | `LTI-<CONTRIBUTOR-SLUG>/ADR.md` |
 | Consolidated course doc | `LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md` |
 | Prompt log (structure / append-only) | `LTI-<CONTRIBUTOR-SLUG>/prompts.md` — per **`.cursor/rules/30-prompt-tracking.mdc`** when assessing course submission hygiene |
 | Optional persisted review | Output path below |
@@ -129,6 +129,6 @@ Collect what the user points at (paths relative to repo root). Typical sets:
 | Plan | `ai-specs/plan/<NNN>-plan.md` |
 | Task | `ai-specs/tasks/<NNN>-task.md` |
 | Review log (optional) | `ai-specs/review/<NNN>-review.md` |
-| Contributor folder | `LTI-<CONTRIBUTOR-SLUG>/` — main doc **`LTI-<CONTRIBUTOR-SLUG>.md`**, **`prompts.md`**, **`ARD.md`** |
+| Contributor folder | `LTI-<CONTRIBUTOR-SLUG>/` — main doc **`LTI-<CONTRIBUTOR-SLUG>.md`**, **`prompts.md`**, **`ADR.md`** |
 
 **`<NNN>`:** `001`–`999`, zero-padded; **next** = max existing match for that directory’s pattern + 1, or `001` if none.

@@ -82,7 +82,7 @@ Agents            →  Role boundaries, handoffs, which skills to read first
        ↓
 Skills            →  Concrete paths, templates, create/update vs validate
        ↓
-Artifacts         →  Required: LTI-<CONTRIBUTOR-SLUG>/*.md (deliverable, prompts, ARD, optional PRD)
+Artifacts         →  Required: LTI-<CONTRIBUTOR-SLUG>/*.md (deliverable, prompts, ADR, optional PRD)
                     Optional: ai-specs/plan|tasks|review/<NNN>-*.md when created
 ```
 
@@ -119,7 +119,7 @@ Invoke via Cursor’s agent picker (e.g. **`/architect`**, **`/product-manager`*
 | **Mission** | Turn agreed goals into coherent **technical** design: C4-aligned Mermaid, typed data models, NFRs, ADRs. |
 | **When to use** | HLD, containers, deep C4 on one component, `erDiagram`, ADR updates, technical plans/tasks. |
 | **When not to use** | Replacing product strategy, MVP calls, or PRD intent without PM alignment. |
-| **Owns** | Technical structure, diagrams (with **`.cursor/rules/50-diagram-standards.mdc`**), **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`** when logging decisions. |
+| **Owns** | Technical structure, diagrams (with **`.cursor/rules/50-diagram-standards.mdc`**), **`LTI-<CONTRIBUTOR-SLUG>/ADR.md`** when logging decisions. |
 | **Does not own** | Lean Canvas, positioning, final prioritization. |
 | **Handoffs** | To **`/product-manager`** for ambiguous requirements or prioritization; expects PRD/deliverable product sections for glossary alignment. |
 
@@ -256,7 +256,7 @@ Use when reviewing a PR or periodically auditing the repo tooling.
 → Paths: `ai-specs/plan/<NNN>-plan.md` or `ai-specs/tasks/<NNN>-task.md` per **`.cursor/rules/40-naming-and-paths.mdc`**. Agent: PM or architect as appropriate; no dedicated skill in this repo revision.
 
 **Develop architecture (HLD, ERD, C4, ADRs)**  
-→ Agent: **`/architect`**. Skill: **`develop-architect`**. Rules: **`.cursor/rules/50-diagram-standards.mdc`**, **`.cursor/rules/20-deliverable-markdown.mdc`** for course sections. ADRs: **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`**.
+→ Agent: **`/architect`**. Skill: **`develop-architect`**. Rules: **`.cursor/rules/50-diagram-standards.mdc`**, **`.cursor/rules/20-deliverable-markdown.mdc`** for course sections. ADRs: **`LTI-<CONTRIBUTOR-SLUG>/ADR.md`**.
 
 **Audit before submission**  
 → Agent: **`/documentation-auditor`**. Skill: **`validate-artifacts`** (read first; emit full **Validation report**). Optional save: `ai-specs/review/<NNN>-review.md`.

@@ -63,7 +63,7 @@ Audit documentation for **completeness**, **clarity**, **internal and cross-file
 | PRD | **`LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md`** (e.g. `LTI-ICS/001-prd.md`) |
 | Plans / tasks | **`ai-specs/plan/<NNN>-plan.md`**, **`ai-specs/tasks/<NNN>-task.md`** |
 | Consolidated course doc | **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`** (e.g. `LTI-ICS/LTI-ICS.md`) |
-| ADRs | **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`** |
+| ADRs | **`LTI-<CONTRIBUTOR-SLUG>/ADR.md`** |
 | Prompt log | **`LTI-<CONTRIBUTOR-SLUG>/prompts.md`** |
 | Optional prior review | **`ai-specs/review/<NNN>-review.md`** |
 | User scope | Paths or glob the user names in chat |

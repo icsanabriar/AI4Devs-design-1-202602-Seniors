@@ -12,7 +12,7 @@ Prevent “looks complete” documentation that is **internally inconsistent**, 
 ## Scope
 
 - **Global:** any milestone where assistants declare design/docs **complete**, **ready for PR**, or **ready to submit**.
-- **Artifacts in scope:** **`LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md`**, `ai-specs/plan/<NNN>-plan.md`, `ai-specs/tasks/<NNN>-task.md`, **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**, **`LTI-<CONTRIBUTOR-SLUG>/prompts.md`**, **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`**, optional **`ai-specs/review/<NNN>-review.md`**.
+- **Artifacts in scope:** **`LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md`**, `ai-specs/plan/<NNN>-plan.md`, `ai-specs/tasks/<NNN>-task.md`, **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**, **`LTI-<CONTRIBUTOR-SLUG>/prompts.md`**, **`LTI-<CONTRIBUTOR-SLUG>/ADR.md`**, optional **`ai-specs/review/<NNN>-review.md`**.
 
 ## Requirements — when validation MUST run
 

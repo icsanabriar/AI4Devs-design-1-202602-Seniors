@@ -315,3 +315,47 @@ wording to locate the mismatches and update them).
 # Prompt - 2026-03-22T03:11:49Z
 ## Agent: Composer
 @.cursor/skills/commit/SKILL.md all
+
+---
+# Prompt - 2026-03-22T03:34:04Z
+## Agent: Composer
+Verify each finding against the current code and only fix it if needed.
+
+In @.cursor/skills/commit/SKILL.md around lines 49 - 60, The commit message
+template in the SKILL.md snippet is inconsistent: the template line "(<scope>):
+<Imperative description with lowercase after the colon>" conflicts with the
+example "feat(dn): Add new diagram for candidates component" and the note saying
+the first word after ':' must be capitalized. Pick one convention and make the
+text consistent: either change the template to require a capitalized first word
+(e.g., "(<scope>): <Imperative description with Capitalized first word>") or
+change the example and explanatory note to require lowercase; update the
+template line, the example string "feat(dn): Add new diagram for candidates
+component", and the descriptive bullet that mentions "first word after `:` is
+capitalized" so all three use the same rule.
+
+---
+# Prompt - 2026-03-22T04:00:00Z
+## Agent: Composer
+Verify each finding against the current code and only fix it if needed.
+
+In @.cursor/agents/documentation-auditor.md at line 66, Update the ADR filename
+referenced in the auditors table: replace the typo
+"LTI-<CONTRIBUTOR-SLUG>/ARD.md" with the correct "LTI-<CONTRIBUTOR-SLUG>/ADR.md"
+wherever it appears (the table entry under "ADRs" currently uses ARD.md). Ensure
+all occurrences in this document that reference ARD.md are corrected so ADR
+checks won't break.
+
+---
+# Prompt - 2026-03-22T03:43:28Z
+## Agent: Composer
+Review all references to @LTI-ICS/ARD.md The filename is wrong, it should be ADR.md. Rename the file and update all the references in all required files.
+
+---
+# Prompt - 2026-03-22T03:45:44Z
+## Agent: Composer
+Rename the file @LTI-ICS/reference-ats-lifecycle-stages.md to ATS-Lifecycle.md and update all the references in all required files.
+
+---
+# Prompt - 2026-03-22T03:47:32Z
+## Agent: Composer
+@.cursor/skills/commit/SKILL.md all

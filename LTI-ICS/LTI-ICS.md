@@ -1,6 +1,6 @@
 # LTI ATS — System design (ICS)
 
-This document is the **consolidated design** for contributor folder **LTI-ICS**. **Product intent** is defined in **[001-prd.md](./001-prd.md)** (version in that file’s **Document control**). **Architecture decisions** are logged in **[ARD.md](./ARD.md)**.
+This document is the **consolidated design** for contributor folder **LTI-ICS**. **Product intent** is defined in **[001-prd.md](./001-prd.md)** (version in that file’s **Document control**). **Architecture decisions** are logged in **[ADR.md](./ADR.md)**.
 
 ## Brief description, added value, and competitive advantages
 
@@ -546,7 +546,7 @@ flowchart TB
 | Topic | Sources |
 |--------|---------|
 | Scope and FR/NFR | [001-prd.md](./001-prd.md) |
-| Structural commitments | [ARD.md](./ARD.md) ADR-001–ADR-005 |
+| Structural commitments | [ADR.md](./ADR.md) ADR-001–ADR-005 |
 | Course brief | Repository **ReadMe.md** |
 
 ## Glossary
@@ -562,5 +562,5 @@ flowchart TB
 ## References
 
 - [001-prd.md](./001-prd.md) — product requirements (authoritative for product scope).  
-- [ARD.md](./ARD.md) — architecture decision records.  
+- [ADR.md](./ADR.md) — architecture decision records.  
 - `.cursor/rules/50-diagram-standards.mdc` — diagram discipline.
