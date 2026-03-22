@@ -227,3 +227,55 @@ and verify no other generated-answer phrasing remains in the prompt content.
 # Prompt - 2026-03-22T02:47:52Z
 ## Agent: Composer
 @.cursor/skills/commit/SKILL.md
+
+---
+# Prompt - 2026-03-22T02:57:35Z
+## Agent: Composer
+Verify each finding against the current code and only fix it if needed.
+
+In @.cursor/skills/commit/SKILL.md around lines 49 - 60, The commit message
+template in the SKILL.md snippet is inconsistent: the template line "(<scope>):
+<Imperative description with lowercase after the colon>" conflicts with the
+example "feat(dn): Add new diagram for candidates component" and the note saying
+the first word after ':' must be capitalized. Pick one convention and make the
+text consistent: either change the template to require a capitalized first word
+(e.g., "(<scope>): <Imperative description with Capitalized first word>") or
+change the example and explanatory note to require lowercase; update the
+template line, the example string "feat(dn): Add new diagram for candidates
+component", and the descriptive bullet that mentions "first word after `:` is
+capitalized" so all three use the same rule.
+
+---
+# Prompt - 2026-03-22T02:59:59Z
+## Agent: Composer
+Verify each finding against the current code and only fix it if needed.
+
+In @.cursor/agents/documentation-auditor.md at line 90, The Markdown table row
+contains an unescaped pipe in the code span
+"ai-specs/plan|tasks|review/<NNN>-*.md" which breaks the table; update the table
+row in .cursor/agents/documentation-auditor.md to either escape the pipes (e.g.,
+replace | with \| inside the code span) or split into multiple inline code spans
+like `ai-specs/plan` / `tasks` / `review/<NNN>-*.md`, making sure the row still
+references the LTI directory rule in .cursor/rules/40-naming-and-paths.mdc and
+keeps the basename match note intact.
+
+---
+# Prompt - 2026-03-22T03:00:59Z
+## Agent: Composer
+Verify each finding against the current code and only fix it if needed.
+
+In @.cursor/skills/generate-prd/SKILL.md at line 59, The wording in SKILL.md
+overstates what validate-artifacts enforces: update the "Course-aligned PRDs"
+sentence so it no longer claims that missing/placeholder Mermaid diagrams or
+skimpy third use cases "do not satisfy .cursor/rules/20-deliverable-markdown.mdc
+/ validate-artifacts expectations"; instead, make the statement accurate by
+specifying that the validator currently checks for section presence (e.g., "##
+Lean Canvas" and "## Use cases") and that completeness/diagram quality may be
+reviewed by downstream processes or manual audit; reference the same header text
+"Course-aligned PRDs" and the validator name validate-artifacts in the revision
+to keep context.
+
+---
+# Prompt - 2026-03-22T03:03:15Z
+## Agent: Composer
+@Commit all

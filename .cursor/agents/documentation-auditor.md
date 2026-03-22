@@ -87,7 +87,7 @@ Audit documentation for **completeness**, **clarity**, **internal and cross-file
 | **Internal consistency** | One glossary, no conflicting MVP definitions inside one doc |
 | **Cross-artifact consistency** | Names and flows match across PRD, `LTI-*` doc, plans, tasks, ADRs |
 | **Clarity** | Headings, testable FRs/AC where expected, explicit Open questions |
-| **Naming / path compliance** | **`ai-specs/plan|tasks|review/<NNN>-*.md`** when present; **`LTI-<CONTRIBUTOR-SLUG>/`** files per **`.cursor/rules/40-naming-and-paths.mdc`**; basename match |
+| **Naming / path compliance** | **`ai-specs/plan/<NNN>-plan.md`**, **`ai-specs/tasks/<NNN>-task.md`**, **`ai-specs/review/<NNN>-review.md`** when present; **`LTI-<CONTRIBUTOR-SLUG>/`** files per **`.cursor/rules/40-naming-and-paths.mdc`**; basename match |
 | **Traceability** | Goals → FRs → metrics; FRs ↔ entities/diagrams; NFRs ↔ architecture |
 | **Duplication** | Copy-paste contradictions, duplicate H1s, redundant conflicting tables |
 | **Unresolved ambiguity** | TBD without owner, “will decide later” without Open questions |

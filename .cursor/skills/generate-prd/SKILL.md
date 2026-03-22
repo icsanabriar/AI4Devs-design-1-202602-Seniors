@@ -56,7 +56,7 @@ LTI-ICS/<NNN>-prd.md
 
 Use this outline; adapt depth to input size.
 
-**Course-aligned PRDs** (supporting **`LTI-*`** / AI4Devs deliverables): **`## Lean Canvas`** and **`## Use cases`** (exactly **three** primary use cases, each with narrative **and** a **Mermaid** diagram) are **mandatory**. Generated PRDs that omit them, skimp on the third use case, or leave diagrams as empty placeholders **do not** satisfy **`.cursor/rules/20-deliverable-markdown.mdc`** / **validate-artifacts** expectations when the PRD is treated as part of the course bundle.
+**Course-aligned PRDs** (supporting **`LTI-*`** / AI4Devs deliverables): **`## Lean Canvas`** and **`## Use cases`** (exactly **three** primary use cases, each with narrative **and** a **Mermaid** diagram) are **mandatory** in this template so outputs stay course-shaped. When **validate-artifacts** reviews a PRD, treat **completeness** as **section presence**—including those headings and the substructure this template calls for—not as automated proof that every diagram is substantive or non-placeholder. **Diagram quality**, placeholder Mermaid, and how fully the third use case is developed are normally judged by **manual audit** or **downstream** review (for example when work is consolidated into **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**, where **`.cursor/rules/20-deliverable-markdown.mdc`** applies to the **main deliverable**, not to **`LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md`**). **validate-artifacts** may still **flag** thin content, but it does not replace that deeper pass.
 
 ```markdown
 # <Product name> — Product Requirements Document
