@@ -391,3 +391,29 @@ Same for NFR-008 vs retention in an old prompt: leave as archive or append a one
 # Prompt - 2026-03-22T03:54:32Z
 ## Agent: Composer
 @.cursor/skills/commit/SKILL.md 
+
+---
+# Prompt - 2026-03-22T04:06:10Z
+## Agent: Composer
+Verify each finding against the current code and only fix it if needed.
+
+In `@LTI-ICS/ADR.md` around lines 64 - 77, ADR-004 is marked "Proposed" but the
+repository's architecture narrative already assumes Redis pub/sub is adopted;
+update ADR-004 by changing its Status from "Proposed" to "Accepted" and add a
+short note in the ADR Decision/Consequences sections reflecting the current
+implemented behavior (Redis pub/sub fan-out and WebSocket termination), or
+alternatively insert a clear conditional statement into the LTI-ICS architecture
+narrative that indicates Redis pub/sub is assumed only if ADR-004 is accepted;
+reference ADR-004, the "Decision" and "Consequences" paragraphs in ADR.md and
+the LTI-ICS architecture section that mentions Redis pub/sub to keep the
+documents consistent.
+
+---
+# Prompt - 2026-03-22T04:07:55Z
+## Agent: Composer
+@.cursor/agents/documentation-auditor.md @.cursor/skills/validate-artifacts/SKILL.md 
+
+---
+# Prompt - 2026-03-22T04:09:12Z
+## Agent: Composer
+@.cursor/skills/commit/SKILL.md 
