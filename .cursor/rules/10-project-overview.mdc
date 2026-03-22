@@ -21,7 +21,7 @@ Rule files use prefixes **`10-`** … **`60-`** for stable ordering and extensio
 | Order | File | Topic |
 |-------|------|--------|
 | 10 | `10-project-overview.mdc` | Repository purpose and course context |
-| 20 | `20-deliverable-markdown.mdc` | Required `LTI-*` Markdown deliverable sections |
+| 20 | `20-deliverable-markdown.mdc` | Required sections in main **`LTI-*/LTI-*.md`** deliverable |
 | 30 | `30-prompt-tracking.mdc` | Mandatory prompt logging |
 | 40 | `40-naming-and-paths.mdc` | Paths, filenames, placeholders |
 | 50 | `50-diagram-standards.mdc` | Mermaid, C4, ERD, architecture consistency |

@@ -119,7 +119,7 @@ Audit documentation for **completeness**, **clarity**, **internal and cross-file
 - **Architecture** (or diagrams) is **not grounded** in stated requirements or labeled assumptions.
 - **Requirements** appear **invented** in downstream docs with **no** upstream source.
 - **Documentation gaps** prevent **auditability** (no traceable FR list, no ADR where decisions are asserted, missing deliverable sections that rules mark mandatory).
-- **Conflicting instructions** from user vs rules—state the conflict and **default to rules** unless user explicitly overrides for the session.
+- **Conflicting instructions** from user vs rules—**state the conflict** and **default to rules**. The user may **narrow the scope** of instructions that are **not** always-applied (for example, optional skills or which subset of files to review next); **no** user request may **negate, waive, or bypass** rules and constraints that are **always-applied** or otherwise **non-negotiable** in this workspace.
 
 ---
 

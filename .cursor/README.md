@@ -4,7 +4,7 @@ This folder configures **Cursor** for the LTI / AI4Devs design exercise: **agent
 
 **Independence from root docs:** Repository-root **`ReadMe.md`** (course brief) is **not** part of `.cursor/` and **must not** be required to link here. Governance for assistants using this setup is defined under **`.cursor/rules/`** and this file.
 
-### Path patterns: what is real vs example
+## Path patterns: what is real vs example
 
 | Kind | Meaning for a new contributor |
 |------|------------------------------|
@@ -102,9 +102,9 @@ Artifacts         →  Required: LTI-<CONTRIBUTOR-SLUG>/*.md (deliverable, promp
 
 Rules are ordered **`10-`** (foundation) through **`60-`** (validation governance). See **`.cursor/rules/10-project-overview.mdc`** for the stack table.
 
-- **Narrower scope wins** for its topic (e.g. **`.cursor/rules/20-deliverable-markdown.mdc`** on `LTI-*/*.md` for deliverable sections).
+- **Narrower scope wins** for its topic (e.g. **`.cursor/rules/20-deliverable-markdown.mdc`** on `LTI-*/LTI-*.md` for main deliverable sections).
 - On conflict: **follow the rule**, not ad-hoc agent habits.
-- **`alwaysApply: true`:** `10-`, `30-`, `40-`, `60-`. **`alwaysApply: false` (glob-scoped):** `20-` (`**/LTI-*/*.md`), `50-` (`LTI-*` + `ai-specs/**/*.md`).
+- **`alwaysApply: true`:** `10-`, `30-`, `40-`, `60-`. **`alwaysApply: false` (glob-scoped):** `20-` (`**/LTI-*/LTI-*.md`), `50-` (`LTI-*` + `ai-specs/**/*.md`).
 
 ---
 
@@ -170,11 +170,11 @@ Run this when touching **`.cursor/`**, before merge, or during periodic audits. 
 
 | # | Check | How to verify (examples) | Pass if |
 |---|--------|---------------------------|---------|
-| 1 | **Rules stack** | List **`.cursor/rules/`** | Exactly **six** files: **`10-` … `60-`**.mdc`; filenames match **`.cursor/rules/10-project-overview.mdc`** stack table. |
+| 1 | **Rules stack** | List **`.cursor/rules/`** | Exactly **six** files matching **`10-*.mdc`** through **`60-*.mdc`**; filenames align with the stack table in **`.cursor/rules/10-project-overview.mdc`**. |
 | 2 | **Agents** | List **`.cursor/agents/`** | **`architect.md`**, **`product-manager.md`**, **`documentation-auditor.md`** present; each references **`.cursor/rules/NN-*.mdc`** and **`.cursor/skills/.../SKILL.md`** paths that exist. |
 | 3 | **Active skills** | List **`.cursor/skills/`** | Folders **`commit`**, **`develop-architect`**, **`generate-prd`**, **`validate-artifacts`** each contain **`SKILL.md`**; **`commit/examples.md`** exists. |
 | 4 | **README vs tree** | Open [Files on disk](#files-on-disk-authoritative-active-layout) | Every **non-legacy** path in the table exists on disk; no orphaned active skill folder missing from the table. |
-| 5 | **Placeholder discipline** | Spot-check **`.cursor/rules/40-naming-and-paths.mdc`** and this README | **`<CONTRIBUTOR-SLUG>`** / **`<NNN>`** used consistently; no bare **`-prd.md`** / **`-plan.md`** stems without **`<NNN>-`**. |
+| 5 | **Placeholder discipline** | Spot-check **`.cursor/rules/40-naming-and-paths.mdc`** and this README | **`<CONTRIBUTOR-SLUG>`** and **`<NNN>`** used consistently; no bare `-prd.md` or `-plan.md` stems without **`<NNN>-`**. |
 | 6 | **Deliverable validation** | Course submission readiness | Still governed by **`.cursor/rules/60-review-and-validation.mdc`** + **`.cursor/skills/validate-artifacts/SKILL.md`**—unchanged; this table does **not** replace that. |
 
 **Quick command hints (repo root):** `ls .cursor/rules`, `ls .cursor/agents`, `ls .cursor/skills` — compare to this document.
@@ -186,9 +186,9 @@ Run this when touching **`.cursor/`**, before merge, or during periodic audits. 
 | Path | Purpose | Scope / enforcement |
 |------|---------|---------------------|
 | **`.cursor/rules/10-project-overview.mdc`** | Repo purpose, LTI context, `LTI-*` layout, collaboration | Global + course layout; foundation |
-| **`.cursor/rules/20-deliverable-markdown.mdc`** | Required sections in main deliverable + `prompts.md` quality | Glob: `**/LTI-*/*.md` |
+| **`.cursor/rules/20-deliverable-markdown.mdc`** | Required sections in main deliverable **`LTI-*/LTI-*.md`** | Glob: `**/LTI-*/LTI-*.md` (`prompts.md`: **`.cursor/rules/30-prompt-tracking.mdc`**) |
 | **`.cursor/rules/30-prompt-tracking.mdc`** | Mandatory append-only `prompts.md` log, format, failure behavior | Typically always-on; path per contributor slug |
-| **`.cursor/rules/40-naming-and-paths.mdc`** | **`ai-specs/plan|tasks|review/<NNN>-*.md`**, **`LTI-<CONTRIBUTOR-SLUG>/`** files, basename match, forbid bare `-prd.md` stems | Global naming |
+| **`.cursor/rules/40-naming-and-paths.mdc`** | `ai-specs/plan/<NNN>-plan.md`, `ai-specs/tasks/<NNN>-task.md`, `ai-specs/review/<NNN>-review.md`; **`LTI-<CONTRIBUTOR-SLUG>/`** files; basename match; forbid bare `-prd.md` stems | Global naming |
 | **`.cursor/rules/50-diagram-standards.mdc`** | Mermaid + C4 semantic/visual consistency, grounding in requirements | `LTI-*` + `ai-specs` markdown with diagrams |
 | **`.cursor/rules/60-review-and-validation.mdc`** | Validation before “complete”; alignment across artifacts | Governance to run validation passes |
 

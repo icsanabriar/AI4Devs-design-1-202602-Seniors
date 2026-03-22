@@ -12,7 +12,7 @@ Prevent “looks complete” documentation that is **internally inconsistent**, 
 ## Scope
 
 - **Global:** any milestone where assistants declare design/docs **complete**, **ready for PR**, or **ready to submit**.
-- **Artifacts in scope:** **`LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md`**, `ai-specs/plan/<NNN>-plan.md`, `ai-specs/tasks/<NNN>-task.md`, **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**, **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`**, optional **`ai-specs/review/<NNN>-review.md`**.
+- **Artifacts in scope:** **`LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md`**, `ai-specs/plan/<NNN>-plan.md`, `ai-specs/tasks/<NNN>-task.md`, **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**, **`LTI-<CONTRIBUTOR-SLUG>/prompts.md`**, **`LTI-<CONTRIBUTOR-SLUG>/ARD.md`**, optional **`ai-specs/review/<NNN>-review.md`**.
 
 ## Requirements — when validation MUST run
 
@@ -25,15 +25,16 @@ Prevent “looks complete” documentation that is **internally inconsistent**, 
 2. **Internal consistency:** No conflicting MVP scope, duplicate **H1**, broken **FR-** / **ADR-** numbering without explanation.
 3. **Cross-artifact alignment:** Goals ↔ FRs ↔ metrics (PRD); FRs ↔ diagram entity names ↔ tasks; NFRs ↔ architecture and ADRs.
 4. **Path compliance:** All new artifacts MUST comply with **`.cursor/rules/40-naming-and-paths.mdc`**.
-5. **Duplication:** MUST flag copy-pasted blocks that contradict each other; MUST NOT “resolve” contradictions by silent deletion without user direction.
-6. **Assumptions and evidence:** Product or compliance claims MUST be labeled **assumption**, **Open question**, or backed by cited context; MUST NOT read as verified facts when they are not.
-7. **Architecture vs requirements:** ADRs and containers MUST NOT introduce **new product requirements** without traceability to PRD, **`ReadMe.md`**, or explicit user instruction.
+5. **Prompt tracking (course submission):** When a contributor **`LTI-*`** submission or **submission-ready** deliverable is in scope, validation MUST check that **`LTI-<CONTRIBUTOR-SLUG>/prompts.md`** **exists** at the path implied by the contributor slug and that its **structure and format** match **`.cursor/rules/30-prompt-tracking.mdc`** (e.g. `# Prompts log` first line, `# Prompt - <UTC>` / `## Agent:` blocks, append-only semantics, separators). **FAIL** the audit if **`LTI-<CONTRIBUTOR-SLUG>/prompts.md`** is **missing** or **materially malformed** relative to that rule. Reviewers and automated validators use **`.cursor/rules/30-prompt-tracking.mdc`** as the normative spec and **`LTI-<CONTRIBUTOR-SLUG>/prompts.md`** as the artifact under test.
+6. **Duplication:** MUST flag copy-pasted blocks that contradict each other; MUST NOT “resolve” contradictions by silent deletion without user direction.
+7. **Assumptions and evidence:** Product or compliance claims MUST be labeled **assumption**, **Open question**, or backed by cited context; MUST NOT read as verified facts when they are not.
+8. **Architecture vs requirements:** ADRs and containers MUST NOT introduce **new product requirements** without traceability to PRD, **`ReadMe.md`**, or explicit user instruction.
 
 ## Output of validation
 
 1. Validation results MUST be structured (PASS / FAIL / N/A per major check or equivalent bullet findings).
 2. Every **FAIL** MUST cite **file path** and **section heading** where possible.
-3. **Blockers** (broken fences, missing required sections, contradictory sources of truth) MUST be reported before claiming completion.
+3. **Blockers** (broken fences, missing required sections, missing or non-compliant **`LTI-<CONTRIBUTOR-SLUG>/prompts.md`** per **`.cursor/rules/30-prompt-tracking.mdc`**, contradictory sources of truth) MUST be reported before claiming completion.
 
 ## Prohibited behavior
 
@@ -45,7 +46,7 @@ Prevent “looks complete” documentation that is **internally inconsistent**, 
 
 - [ ] Checklist in this rule addressed or explicitly marked out-of-scope with reason.
 - [ ] Contradictions listed, not hidden.
-- [ ] Path and diagram rules (**`.cursor/rules/40-naming-and-paths.mdc`**, **`.cursor/rules/50-diagram-standards.mdc`**) cited when violations are found.
+- [ ] Path, prompt-tracking (**`.cursor/rules/30-prompt-tracking.mdc`** / **`LTI-<CONTRIBUTOR-SLUG>/prompts.md`**), and diagram rules (**`.cursor/rules/40-naming-and-paths.mdc`**, **`.cursor/rules/50-diagram-standards.mdc`**) cited when violations are found.
 
 ## Cursor tooling health (maintainer audits)
 

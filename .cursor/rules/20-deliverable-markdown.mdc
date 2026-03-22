@@ -1,6 +1,6 @@
 ---
-description: "20 — Required sections for LTI-* deliverable Markdown (course checklist)"
-globs: "**/LTI-*/*.md"
+description: "20 — Required sections for LTI-* main deliverable Markdown (course checklist)"
+globs: "**/LTI-*/LTI-*.md"
 alwaysApply: false
 ---
 
@@ -8,13 +8,12 @@ alwaysApply: false
 
 ## Purpose
 
-Make the **graded consolidated design document** and **`prompts.md`** complete, renderable, and auditable against the course checklist.
+Make the **graded consolidated design document** (**`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`**) complete, renderable, and auditable against the course checklist. **`prompts.md`** in the same folder is governed by **`.cursor/rules/30-prompt-tracking.mdc`** (logging and deliverable quality)—this rule MUST NOT be treated as applying to **`prompts.md`**, PRDs, **`ARD.md`**, or other **`LTI-*`** Markdown.
 
 ## Scope
 
-- **Project-specific:** Markdown files under **`LTI-<CONTRIBUTOR-SLUG>/`** (example: **`LTI-ICS/`**).
-- **Primary target:** the single main file **`LTI-<CONTRIBUTOR-SLUG>.md`**.
-- **Secondary:** **`prompts.md`** in the same folder (content rules for prompts are also in **`.cursor/rules/30-prompt-tracking.mdc`** for logging behavior).
+- **Glob attachment:** files matching **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`** only (same pattern as **`**/LTI-*/LTI-*.md`**; basename aligns with folder per **`.cursor/rules/40-naming-and-paths.mdc`**).
+- **Out of scope for this rule:** **`prompts.md`**, **`LTI-<CONTRIBUTOR-SLUG>/<NNN>-prd.md`**, **`ARD.md`**, and any other Markdown under **`LTI-*`** (those files use other rules or templates).
 
 ## Requirements — main design document
 
@@ -29,12 +28,6 @@ The file **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`** MUST contain all
 7. **C4-style depth:** **one** component MUST be drilled into **in depth** (diagram + explanation), consistent with **`.cursor/rules/50-diagram-standards.mdc`**.
 
 Assistants MUST use **Mermaid** where the course expects diagrams unless the user explicitly chooses another repo-friendly format that still renders in the target viewer.
-
-## Requirements — `prompts.md` (deliverable quality)
-
-1. The file MUST exist in the contributor folder and MUST be part of submission hygiene.
-2. Content MUST be **readable** (e.g. grouped by phase or artifact).
-3. Logging of **new** prompts MUST follow **`.cursor/rules/30-prompt-tracking.mdc`** (append-only, format, timestamps).
 
 ## Prohibited behavior
 

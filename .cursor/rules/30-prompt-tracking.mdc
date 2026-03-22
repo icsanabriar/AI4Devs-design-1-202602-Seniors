@@ -31,6 +31,12 @@ Guarantee an **append-only**, **auditable** log of user prompts so course review
    - MUST NOT place **`---`** as the first line of the file.
 9. **Append-only:** MUST NOT delete, reorder, or rewrite previous entries; MUST only add to the end.
 
+## Deliverable quality (course; `prompts.md`)
+
+1. **`prompts.md`** MUST exist in the contributor folder and MUST be part of submission hygiene together with the main **`LTI-<CONTRIBUTOR-SLUG>/LTI-<CONTRIBUTOR-SLUG>.md`** deliverable (see **`.cursor/rules/10-project-overview.mdc`**).
+2. Content MUST be **readable** for reviewers (e.g. grouped by phase or artifact).
+3. Logging of **new** prompts MUST satisfy **Requirements** above (append-only, format, timestamps).
+
 ## Entry format (required)
 
 ```markdown
