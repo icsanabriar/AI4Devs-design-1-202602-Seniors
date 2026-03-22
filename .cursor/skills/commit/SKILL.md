@@ -46,7 +46,7 @@ Record a **scoped, traceable** git snapshot with a **single-line conventional su
 Single-line subject (no trailing period):
 
 ```text
-<type>(<scope>): <Imperative description with lowercase after the colon>
+<type>(<scope>): <Imperative description with capitalized first word after the colon>
 ```
 
 **Example (canonical for this repo):**

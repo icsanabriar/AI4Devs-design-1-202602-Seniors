@@ -56,6 +56,8 @@ LTI-ICS/<NNN>-prd.md
 
 Use this outline; adapt depth to input size.
 
+**Course-aligned PRDs** (supporting **`LTI-*`** / AI4Devs deliverables): **`## Lean Canvas`** and **`## Use cases`** (exactly **three** primary use cases, each with narrative **and** a **Mermaid** diagram) are **mandatory**. Generated PRDs that omit them, skimp on the third use case, or leave diagrams as empty placeholders **do not** satisfy **`.cursor/rules/20-deliverable-markdown.mdc`** / **validate-artifacts** expectations when the PRD is treated as part of the course bundle.
+
 ```markdown
 # <Product name> — Product Requirements Document
 
@@ -79,6 +81,24 @@ Use this outline; adapt depth to input size.
 
 ## User journeys (summary)
 <!-- 2–5 bullets per primary journey; link to future use-case docs if needed. -->
+
+## Lean Canvas
+<!-- REQUIRED (course-aligned): Business model canvas — Mermaid (e.g. flowchart or structured layout) and/or explicit sub-bullets for Problem, Solution, Unique value, Unfair advantage, Customer segments, Channels, Revenue streams, Cost structure, Key metrics. Must be legible when rendered (e.g. GitHub). -->
+
+## Use cases
+<!-- REQUIRED (course-aligned): Exactly THREE primary use cases — not fewer, not more. Each ### below MUST have (1) a short narrative and (2) one fenced Mermaid diagram (sequence, flowchart, or approved equivalent) in the generated file — not “TBD” or omitted. -->
+
+### Use case 1 — <primary title>
+<!-- 1–3 sentences: primary actor, goal, success criteria. -->
+<!-- REQUIRED: Mermaid diagram in a fenced mermaid block immediately after this subsection. -->
+
+### Use case 2 — <primary title>
+<!-- Narrative. -->
+<!-- REQUIRED: Mermaid diagram below. -->
+
+### Use case 3 — <primary title>
+<!-- Narrative. -->
+<!-- REQUIRED: Mermaid diagram below. -->
 
 ## Functional requirements
 <!-- Numbered FRs: FR-001 … Each testable; mark MoSCoW or Priority P0–P3 if helpful. -->
@@ -131,12 +151,13 @@ When the PRD supports the **course bundle** (single **`LTI-<CONTRIBUTOR-SLUG>/LT
 | Check | Pass |
 |-------|------|
 | FRs | Each **FR-NNN** is **testable** (“system shall…” or equivalent clarity) |
+| Course bundle | **Lean Canvas** present; **Use cases** has **exactly three** `###` subsections, each with narrative **+** valid fenced **`mermaid`** diagram when PRD is course-aligned |
 | Traceability | Goals → FRs → metrics where obvious; glossary for overloaded terms |
 | Honesty | No fabricated compliance/vendor claims; gaps in **Open questions** |
 | Tone | Product-level; defer **component-level C4** and **typed ERD** depth to **develop-architect** |
 | Secrets | Redact tokens, salaries, PII from input |
 
-**Bad output:** Buzzword summary, non-testable FRs, missing **Non-goals** / **Open questions** when scope was underspecified.
+**Bad output:** Buzzword summary, non-testable FRs, missing **Non-goals** / **Open questions** when scope was underspecified, or course-aligned PRD missing **Lean Canvas** / **three** diagram-backed use cases.
 
 **Good output:** Numbered FRs/NFRs, explicit MVP phasing, Mermaid fences valid, path **`LTI-ICS/<NNN>-prd.md`** (or matching **`LTI-<CONTRIBUTOR-SLUG>/`**) confirmed.
 
