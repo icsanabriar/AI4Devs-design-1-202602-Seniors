@@ -477,7 +477,7 @@ flowchart TB
     OBJ[(Object storage)]
   end
   IDP[Identity provider]
-  EXT[External providers\nboards / email / calendar / assessments / LLM]
+  EXT[External providers boards / email / calendar / assessments / LLM]
   W1 -->|HTTPS JSON sync| API
   W2 -->|HTTPS JSON sync| API
   W1 --> IDP
