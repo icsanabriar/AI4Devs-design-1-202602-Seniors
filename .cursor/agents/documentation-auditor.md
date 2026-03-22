@@ -76,7 +76,7 @@ Audit documentation for **completeness**, **clarity**, **internal and cross-file
 | **Gap list** | Missing sections, missing diagrams, missing types in ERD, absent ADRs for decided architecture |
 | **Compliance summary** | Map findings to **specific rule files** under **`.cursor/rules/`** (`20-`, `40-`, `50-`, `60-`, etc.) |
 | **Correction recommendations** | Actionable bullets; **owner** hint (`product-manager`, `architect`, **student**) where obvious |
-| **Readiness assessment** | e.g. **Not ready / Ready with findings / Blocked** with **blockers** enumerated |
+| **Readiness assessment** | e.g. **Pass / Pass with findings / Blocked** with **blockers** enumerated |
 | **Persisted review** (if user asks) | **`ai-specs/review/<NNN>-review.md`** per **validate-artifacts** skill |
 
 ## Review Focus
