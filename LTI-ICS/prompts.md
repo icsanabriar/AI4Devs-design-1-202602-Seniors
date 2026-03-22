@@ -2,7 +2,7 @@
 
 # Prompt - 2026-03-22T00:00:37Z
 ## Agent: Composer
-Frame the PRD around the seven ATS lifecycle stages (see `reference-ats-lifecycle-stages.md` in this folder for the numbered list).
+Frame the PRD around the seven ATS lifecycle stages (see `ATS-Lifecycle.md` in this folder for the numbered list).
 
 Based on the previous context, @.cursor/agents/product-manager.md @.cursor/skills/generate-prd/SKILL.md
 
@@ -359,3 +359,35 @@ Rename the file @LTI-ICS/reference-ats-lifecycle-stages.md to ATS-Lifecycle.md a
 # Prompt - 2026-03-22T03:47:32Z
 ## Agent: Composer
 @.cursor/skills/commit/SKILL.md all
+
+---
+# Prompt - 2026-03-22T03:48:39Z
+## Agent: Composer
+@.cursor/agents/documentation-auditor.md @.cursor/skills/validate-artifacts/SKILL.md 
+
+---
+# Prompt - 2026-03-22T03:50:50Z
+## Agent: Composer
+@.cursor/agents/product-manager.md Renumber or reorder NFR-* so IDs increase monotonically (or add a one-line note that numbering follows subsection insert order)
+
+---
+# Prompt - 2026-03-22T03:51:44Z
+## Agent: Composer
+at @LTI-ICS/prompts.md update the reference from eference-ats-lifecycle-stages.md to ATS-Lifecycle.md
+
+---
+# Prompt - 2026-03-22T03:52:24Z
+## Agent: Composer
+@.cursor/agents/documentation-auditor.md @.cursor/skills/validate-artifacts/SKILL.md 
+
+---
+# Prompt - 2026-03-22T03:53:55Z
+## Agent: Composer
+Same for NFR-008 vs retention in an old prompt: leave as archive or append a one-line clarification that NFR IDs were renumbered in PRD v0.5.
+
+**Reviewer note (PRD v0.5):** **001-prd.md** v0.5 (2026-03-22) defines **NFR-001–NFR-011** in section order; older prompts that cite **NFR-008** for **retention** refer to the requirement now **NFR-003**; **NFR-008** is **RTO/RPO**.
+
+---
+# Prompt - 2026-03-22T03:54:32Z
+## Agent: Composer
+@.cursor/skills/commit/SKILL.md 

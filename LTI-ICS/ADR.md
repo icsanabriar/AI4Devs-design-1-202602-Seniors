@@ -83,7 +83,7 @@ Horizontal scaling of API nodes requires shared pub/sub; must authenticate socke
 **Status:** Accepted  
 **Date:** 2026-03-22  
 **Context:**  
-FR-012, FR-027–FR-028 and NFR-007 require assistive AI, tenant toggles, traceability, and no autonomous negative decisions.
+FR-012, FR-027–FR-028 and NFR-011 require assistive AI, tenant toggles, traceability, and no autonomous negative decisions.
 
 **Decision:**  
 Implement an **AI orchestration** component inside the API process (module boundary) that: (1) loads **only authorized** job/application text after policy check, (2) calls an **external LLM API** over TLS, (3) persists outputs in **`ai_inference_log`** linked to the domain record, (4) never applies stage changes without a **human-initiated** command.

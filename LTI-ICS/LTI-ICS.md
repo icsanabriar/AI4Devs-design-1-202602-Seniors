@@ -11,13 +11,13 @@ This document is the **consolidated design** for contributor folder **LTI-ICS**.
 - **End-to-end workflow** in one system of record, with **audit-friendly** history for pipeline moves and decisions (aligns with FR-010, FR-013, FR-022; NFR-002).
 - **Shared visibility** and **near-real-time** updates for recruiter–hiring manager collaboration (FR-023, FR-024; ADR-004).
 - **Automations** with an explicit **automation audit log** (FR-025, FR-026).
-- **Assistive AI** for summaries and highlights with **human-in-the-loop** controls and persisted inference logs (FR-012, FR-027–FR-028; NFR-007; ADR-005).
+- **Assistive AI** for summaries and highlights with **human-in-the-loop** controls and persisted inference logs (FR-012, FR-027–FR-028; NFR-011; ADR-005).
 
 **Competitive advantages** (hypothesis, to validate with pilots)
 
 - **Opinionated collaboration** rather than checklist-only ATS UX.
 - **Transparency** for AI outputs (citations, logging) to reduce “black box” risk.
-- **Integration-first** posture with a dedicated **worker** boundary for unreliable externals (ADR-001), improving operability (NFR-006).
+- **Integration-first** posture with a dedicated **worker** boundary for unreliable externals (ADR-001), improving operability (NFR-010).
 
 ## Research and analysis
 
@@ -27,7 +27,7 @@ This document is the **consolidated design** for contributor folder **LTI-ICS**.
 
 1. **Security and privacy of candidate PII** (NFR-001) → strong **tenant scoping** and RBAC on every read/write path (ADR-002).
 2. **Auditability** for hiring decisions and AI assistance (NFR-002, FR-028) → immutable-style **audit** and **AI inference** logs in the relational model.
-3. **Operability of integrations** (NFR-006) → **async worker**, retries, and structured failure signals (ADR-001).
+3. **Operability of integrations** (NFR-010) → **async worker**, retries, and structured failure signals (ADR-001).
 4. **Time-to-market** → **modular monolith** API before service explosion (ADR-001).
 
 **Open questions** (architecture-relevant): data residency, RLS hardening, exact job-board and assessment vendors, retention/deletion for resumes and AI logs—see PRD **Open questions** and **ADR-003** consequences.
@@ -424,7 +424,7 @@ erDiagram
 
 End users interact with **two web clients**: an internal **Recruiter web app** (recruiters, hiring managers, admins) and a **Candidate apply web** experience. Both call the **ATS API application** over **HTTPS** with **Bearer tokens** from the **identity provider** (candidates may use a separate auth flow or guest apply—**product open question**).
 
-The API enforces **Policy and RBAC**, mutates **PostgreSQL**, reads/writes **object storage** for resumes, and publishes **integration commands** and **domain events** through an **outbox** for the **integration worker**. The worker talks to **job boards**, **email**, **calendar**, and **assessment** systems—retries and dead letters satisfy NFR-006.
+The API enforces **Policy and RBAC**, mutates **PostgreSQL**, reads/writes **object storage** for resumes, and publishes **integration commands** and **domain events** through an **outbox** for the **integration worker**. The worker talks to **job boards**, **email**, **calendar**, and **assessment** systems—retries and dead letters satisfy NFR-010.
 
 **Redis** backs **pub/sub** (and optional cache) for collaboration notifications (ADR-004). **Search index** (OpenSearch/Elasticsearch) remains **optional**; list views can rely on indexed SQL for MVP.
 
